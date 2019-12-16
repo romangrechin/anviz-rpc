@@ -51,4 +51,29 @@ Http wrapper for anviz devices
 Ответ:
      
     {"data":null,"error":null}
+  #### GET /[device_id:]/records
+Параметры:
     
+  - new_only - если равно 1, то возвращаются только новые записи. Иначе: все
+ 
+Ответ:
+
+    {
+	"data": [
+		{
+			"user_id": 2,
+			"datetime": "29-08-2019 18:19:56",
+			"backup_code": 4,
+			"type": "out",
+			"attendance_mode": 0,
+			"work_types": 0
+		},
+		{
+			"user_id": 2,
+			"datetime": "29-08-2019 18:20:10",
+			"backup_code": 4,
+			"type": "in",
+			"attendance_mode": 0,
+			"work_types": 0
+		},
+	}
