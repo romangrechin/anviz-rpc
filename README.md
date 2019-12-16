@@ -93,3 +93,38 @@ Http wrapper for anviz devices
 - count == 0:
  
        {"data":0,"error":null}
+  #### GET /[device_id:]/users
+  
+ Ответ:
+ 
+      {
+	"data": [
+		{			
+		        "id": 11,
+			"password": 0,
+			"card_code": 12912225,
+			"name": "Тест",
+			"department": 0,
+			"group": 0,
+			"attendance_mode": 248,
+			"registered_fp": 0,
+			"keep": 45,
+			"special_info": 64,
+			"is_admin": false
+		},
+		{
+			"id": 12,
+			"password": 130397,
+			"card_code": 13039720,
+			"name": "Виктория",
+			"department": 0,
+			"group": 0,
+			"attendance_mode": 248,
+			"registered_fp": 0,
+			"keep": 8,
+			"special_info": 64,
+			"is_admin": false
+		}
+	],
+	"error":null
+    }
