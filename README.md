@@ -22,3 +22,19 @@ Http wrapper for anviz devices
 Ответ:
 
     {"data":{"id":5956},"error":null} 
+    
+  #### GET /[device_id:]/disconnect
+Ответ:
+  
+    {"data":null,"error":null}
+
+  #### GET /[device_id:]/state
+Ответ:
+  
+    {"data":{"code":1,"text":"connected"},"error":null}
+коды состояний: 0-disconnected, 1-connected, 2-busy
+
+  #### GET /[device_id:]/status
+Ответ:
+
+    {"data":{"records":{"users":34,"fingerprints":0,"passwords":2,"cards":33,"all":1475,"new":0},"capacity":{"users":3000,"fingerprints":3000,"records":100000},"state":{"code":1,"text":"connected"}},"error":null}
