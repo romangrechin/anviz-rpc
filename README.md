@@ -145,4 +145,40 @@ Http wrapper for anviz devices
         "special_info": 64,
         "is_admin": false
     }
-      
+   
+  Ответ:
+  
+    {"data":null,"error":null}
+    
+  #### POST /[device_id:]/users/[user_id:]/modify
+  
+  Тело запроса:
+  
+    {            
+        "password": 0,
+        "card_code": 12912225,
+        "name": "Тест",
+        "department": 0,
+        "group": 0,
+        "attendance_mode": 248,
+        "registered_fp": 0,
+        "keep": 45,
+        "special_info": 64,
+        "is_admin": false
+    }
+   
+  Ответ:
+  
+    {"data":null,"error":null}
+    
+   #### GET /[device_id:]/users/[user_id:]/delete
+   
+Параметры:
+  
+  - backup - если **backup** равен ***0xff***, то пользователь удаляется полностью. Иначе: сохраняюся данные соглаcно значению параметра  (подробнее в документации протокола)
+   
+  Ответ:
+  
+    {"data":null,"error":null}
+  
+  
