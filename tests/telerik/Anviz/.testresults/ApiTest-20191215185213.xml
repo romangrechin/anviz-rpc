@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<run passed="1" failed="0" unexecuted="0" time="336" total="1">
+  <tests>
+    <test key=".\Test Case" name="Test Case" outcome="passed" time="172">
+      <step id="7aOBo5o5u8VV6lQj61nUX2" name="GetUsers" outcome="passed" time="123">
+        <action id="6Ui3eYoMWmZXHC8j609wfI" type="http-request" outcome="passed" time="117" />
+      </step>
+    </test>
+  </tests>
+  <output>
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/users/" />
+    <output message="Response received with status code: 200 OK" />
+  </output>
+  <errors />
+</run>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<run passed="1" failed="0" unexecuted="0" time="741" total="1">
+  <tests>
+    <test key=".\Test Case" name="Test Case" outcome="passed" time="625">
+      <step id="2HT7PdPw7GHgJu6q7cLdks" name="Connect" outcome="passed" time="365">
+        <action id="5PGezbbXIZjCCCdgivTXK5" type="http-request" outcome="passed" time="347" />
+        <action id="7fStb5a2YfIpLrdMswVz1l" type="verify" outcome="passed" time="13" />
+      </step>
+      <step id="5NgA3r5LauGBu2e8DowXNq" name="GetTime" outcome="passed" time="253">
+        <action id="2yoXLvTZe6LgKAEuWKEfJt" type="http-request" outcome="passed" time="253" />
+      </step>
+      <step id="49WJHCQDv4jDemawuZModA" name="Disconnect" outcome="passed" time="4">
+        <action id="14bK8t75a2spnpLTzR4Z7h" type="http-request" outcome="passed" time="4" />
+      </step>
+    </test>
+  </tests>
+  <output>
+    <output message="Executing HTTP Request: POST http://localhost:8081/connect" />
+    <output message="Response received with status code: 200 OK" />
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/datetime" />
+    <output message="Response received with status code: 200 OK" />
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/disconnect" />
+    <output message="Response received with status code: 404 Not Found" />
+  </output>
+  <errors />
+</run>

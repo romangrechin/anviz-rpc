@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<run passed="0" failed="1" unexecuted="0" time="224" total="1">
+  <tests>
+    <test key=".\Test Case" name="Test Case" outcome="failed" time="106">
+      <step id="2HT7PdPw7GHgJu6q7cLdks" name="Connect" outcome="failed" time="104">
+        <action id="5PGezbbXIZjCCCdgivTXK5" type="http-request" outcome="passed" time="79" />
+        <action id="7fStb5a2YfIpLrdMswVz1l" type="verify" outcome="failed" time="19">
+          <error message="Expected was '200'. Actual was '404'" />
+        </action>
+      </step>
+    </test>
+  </tests>
+  <output>
+    <output message="Executing HTTP Request: POST http://localhost:8081/connect" />
+    <output message="Response received with status code: 404 Not Found" />
+  </output>
+  <errors />
+</run>

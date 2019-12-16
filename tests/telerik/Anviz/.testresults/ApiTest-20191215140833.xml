@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<run passed="1" failed="0" unexecuted="0" time="258" total="1">
+  <tests>
+    <test key=".\Test Case" name="Test Case" outcome="passed" time="138">
+      <step id="52ggBfeCkD73ELGUlG6eqe" name="GetTime" outcome="passed" time="103">
+        <action id="1y32Cf6OmyLSHn7jRoKvAr" type="http-request" outcome="passed" time="99" />
+      </step>
+    </test>
+  </tests>
+  <output>
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/datetime" />
+    <output message="Response received with status code: 200 OK" />
+  </output>
+  <errors />
+</run>

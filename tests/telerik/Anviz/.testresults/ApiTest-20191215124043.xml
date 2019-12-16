@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<run passed="1" failed="0" unexecuted="0" time="226" total="1">
+  <tests>
+    <test key=".\Test Case" name="Test Case" outcome="passed" time="108">
+      <step id="49WJHCQDv4jDemawuZModA" name="Http Request" outcome="passed" time="75">
+        <action id="14bK8t75a2spnpLTzR4Z7h" type="http-request" outcome="passed" time="71" />
+      </step>
+    </test>
+  </tests>
+  <output>
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/disconnect" />
+    <output message="Response received with status code: 200 OK" />
+  </output>
+  <errors />
+</run>

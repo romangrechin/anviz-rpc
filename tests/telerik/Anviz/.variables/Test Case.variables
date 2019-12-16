@@ -1,0 +1,215 @@
+{
+  "$version": "runtime-variables/v1",
+  "scopes": {
+    "2HT7PdPw7GHgJu6q7cLdks": {
+      "variables": {
+        "RequestUrl": "http://localhost:8081/connect",
+        "RequestVerb": "POST",
+        "RequestHeaders": {"X-API-Key":"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C","User-Agent":"Telerik Test Studio for APIs","Host":"localhost:8081","Content-Length":"36","Connection":"Keep-Alive"},
+        "RequestBody": {"Content":"ew0KCSJob3N0IjogIjE5NC4xODMuMTcxLjkyOjUwMTAiDQp9","FilePath":".\\Test Case-5PGezbbXIZjCCCdgivTXK5-request.txt","Mode":"binary"},
+        "RequestCookies": [],
+        "StatusCode": 200,
+        "Headers": {"Content-Length":"34","Content-Type":"application/json; charset=utf-8","Date":"Mon, 16 Dec 2019 06:23:19 GMT"},
+        "Body": {"Content":"eyJkYXRhIjp7ImlkIjo1OTU2fSwiZXJyb3IiOm51bGx9Cg==","FilePath":".\\Test Case-5PGezbbXIZjCCCdgivTXK5-connect.json","Mode":"binary"},
+        "ResponseTime": 2521,
+        "ReasonPhrase": "OK"
+      }
+    },
+    "5NgA3r5LauGBu2e8DowXNq": {
+      "variables": {
+        "RequestUrl": "http://localhost:8081/5956/state",
+        "RequestVerb": "GET",
+        "RequestHeaders": {"X-API-Key":"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C","User-Agent":"Telerik Test Studio for APIs","Host":"localhost:8081"},
+        "RequestBody": null,
+        "RequestCookies": [],
+        "StatusCode": 200,
+        "Headers": {"Content-Length":"52","Content-Type":"application/json; charset=utf-8","Date":"Mon, 16 Dec 2019 06:23:19 GMT"},
+        "Body": {"Content":"eyJkYXRhIjp7ImNvZGUiOjEsInRleHQiOiJjb25uZWN0ZWQifSwiZXJyb3IiOm51bGx9Cg==","FilePath":".\\Test Case-2yoXLvTZe6LgKAEuWKEfJt-state.json","Mode":"binary"},
+        "ResponseTime": 0,
+        "ReasonPhrase": "OK"
+      }
+    },
+    "aCIYFbxWO2HHSUIx5IeIN": {
+      "variables": {
+        "RequestUrl": "http://localhost:8081/5956/status",
+        "RequestVerb": "GET",
+        "RequestHeaders": {"X-API-Key":"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C","User-Agent":"Telerik Test Studio for APIs","Host":"localhost:8081"},
+        "RequestBody": null,
+        "RequestCookies": [],
+        "StatusCode": 200,
+        "Headers": {"Content-Length":"209","Content-Type":"application/json; charset=utf-8","Date":"Mon, 16 Dec 2019 06:23:20 GMT"},
+        "Body": {"Content":"eyJkYXRhIjp7InJlY29yZHMiOnsidXNlcnMiOjM0LCJmaW5nZXJwcmludHMiOjAsInBhc3N3b3JkcyI6MiwiY2FyZHMiOjMzLCJhbGwiOjE0NzksIm5ldyI6NH0sImNhcGFjaXR5Ijp7InVzZXJzIjozMDAwLCJmaW5nZXJwcmludHMiOjMwMDAsInJlY29yZHMiOjEwMDAwMH0sInN0YXRlIjp7ImNvZGUiOjEsInRleHQiOiJjb25uZWN0ZWQifX0sImVycm9yIjpudWxsfQo=","FilePath":".\\Test Case-1C6gMUkQbFgnFf7I8HyGYm-status.json","Mode":"binary"},
+        "ResponseTime": 561,
+        "ReasonPhrase": "OK"
+      }
+    },
+    "64u428RcI1JnP6fFT74YDn": {
+      "variables": {
+        "RequestUrl": "http://localhost:8081/5956/datetime",
+        "RequestVerb": "GET",
+        "RequestHeaders": {"X-API-Key":"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C","User-Agent":"Telerik Test Studio for APIs","Host":"localhost:8081"},
+        "RequestBody": null,
+        "RequestCookies": [],
+        "StatusCode": 200,
+        "Headers": {"Content-Length":"57","Content-Type":"application/json; charset=utf-8","Date":"Mon, 16 Dec 2019 06:23:41 GMT"},
+        "Body": {"Content":"eyJkYXRhIjp7ImRhdGV0aW1lIjoiMTYtMTItMjAxOSAwODoyMzoyNyJ9LCJlcnJvciI6bnVsbH0K","FilePath":".\\Test Case-SJ5seSVRcyS06xZM2NOWG-datetime.json","Mode":"binary"},
+        "ResponseTime": 261,
+        "ReasonPhrase": "OK"
+      }
+    },
+    "7aOBo5o5u8VV6lQj61nUX2": {
+      "variables": {
+        "RequestUrl": "http://localhost:8081/5956/users/",
+        "RequestVerb": "GET",
+        "RequestHeaders": {"X-API-Key":"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C","User-Agent":"Telerik Test Studio for APIs","Host":"localhost:8081"},
+        "RequestBody": null,
+        "RequestCookies": [],
+        "StatusCode": 200,
+        "Headers": {"Transfer-Encoding":"chunked","Content-Type":"application/json; charset=utf-8","Date":"Mon, 16 Dec 2019 06:23:44 GMT"},
+        "Body": {"Content":"eyJkYXRhIjpbeyJpZCI6MSwicGFzc3dvcmQiOjAsImNhcmRfY29kZSI6MSwibmFtZSI6IuStoeeJpea4gCIsImRlcGFydG1lbnQiOjAsImdyb3VwIjowLCJhdHRlbmRhbmNlX21vZGUiOjYsInJlZ2lzdGVyZWRfZnAiOjAsImtlZXAiOjkxLCJzcGVjaWFsX2luZm8iOjY0LCJpc19hZG1pbiI6ZmFsc2V9LHsiaWQiOjExLCJwYXNzd29yZCI6MCwiY2FyZF9jb2RlIjoxMjkxMjIyNSwibmFtZSI6ItCi0LXRgdGCIiwiZGVwYXJ0bWVudCI6MCwiZ3JvdXAiOjAsImF0dGVuZGFuY2VfbW9kZSI6MjQ4LCJyZWdpc3RlcmVkX2ZwIjowLCJrZWVwIjo0NSwic3BlY2lhbF9pbmZvIjo2NCwiaXNfYWRtaW4iOmZhbHNlfSx7ImlkIjoxMiwicGFzc3dvcmQiOjEzMDM5NywiY2FyZF9jb2RlIjoxMzAzOTcyMCwibmFtZSI6ItCS0LjQutGC0L7RgNC40Y8iLCJkZXBhcnRtZW50IjowLCJncm91cCI6MCwiYXR0ZW5kYW5jZV9tb2RlIjoyNDgsInJlZ2lzdGVyZWRfZnAiOjAsImtlZXAiOjgsInNwZWNpYWxfaW5mbyI6NjQsImlzX2FkbWluIjpmYWxzZX0seyJpZCI6MTcsInBhc3N3b3JkIjowLCJjYXJkX2NvZGUiOjQ2MTg0MTcsIm5hbWUiOiJNYWtzaW0iLCJkZXBhcnRtZW50IjowLCJncm91cCI6MSwiYXR0ZW5kYW5jZV9tb2RlIjoyNDgsInJlZ2lzdGVyZWRfZnAiOjAsImtlZXAiOjgsInNwZWNpYWxfaW5mbyI6NjQsImlzX2FkbWluIjpmYWxzZX0seyJpZCI6NDQsInBhc3N3b3JkIjowLCJjYXJkX2NvZGUiOjEyOTEyMjI1LCJuYW1lIjoi5Iqz5rGv55Wz4rWPIiwiZGVwYXJ0bWVudCI6MCwiZ3JvdXAiOjAsImF0dGVuZGFuY2VfbW9kZSI6NiwicmVnaXN0ZXJlZF9mcCI6MCwia2VlcCI6MCwic3BlY2lhbF9pbmZvIjo2NCwiaXNfYWRtaW4iOmZhbHNlfSx7ImlkIjo0NiwicGFzc3dvcmQiOjAsImNhcmRfY29kZSI6MTMwODcyNDIsIm5hbWUiOiLlkaHniaHnkbXnkaUiLCJkZXBhcnRtZW50IjowLCJncm91cCI6MCwiYXR0ZW5kYW5jZV9tb2RlIjo2LCJyZWdpc3RlcmVkX2ZwIjowLCJrZQ==","FilePath":".\\Test Case-6Ui3eYoMWmZXHC8j609wfI-tmp8561.json","Mode":"binary"},
+        "ResponseTime": 2029,
+        "ReasonPhrase": "OK"
+      }
+    },
+    "49WJHCQDv4jDemawuZModA": {
+      "variables": {
+        "RequestUrl": "http://localhost:8081/5956/disconnect",
+        "RequestVerb": "GET",
+        "RequestHeaders": {"X-API-Key":"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C","User-Agent":"Telerik Test Studio for APIs","Host":"localhost:8081"},
+        "RequestBody": null,
+        "RequestCookies": [],
+        "StatusCode": 200,
+        "Headers": {"Content-Length":"27","Content-Type":"application/json; charset=utf-8","Date":"Mon, 16 Dec 2019 06:23:48 GMT"},
+        "Body": {"Content":"eyJkYXRhIjpudWxsLCJlcnJvciI6bnVsbH0K","FilePath":".\\Test Case-14bK8t75a2spnpLTzR4Z7h-disconnect.json","Mode":"binary"},
+        "ResponseTime": 0,
+        "ReasonPhrase": "OK"
+      }
+    },
+    ".\\Test Case": {
+      "variables": {
+        "RequestUrl": "http://localhost:8081/5956/disconnect",
+        "RequestVerb": "GET",
+        "RequestHeaders": {"X-API-Key":"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C","User-Agent":"Telerik Test Studio for APIs","Host":"localhost:8081"},
+        "RequestBody": null,
+        "RequestCookies": [],
+        "StatusCode": 200,
+        "Headers": {"Content-Length":"27","Content-Type":"application/json; charset=utf-8","Date":"Mon, 16 Dec 2019 06:23:48 GMT"},
+        "Body": {"Content":"eyJkYXRhIjpudWxsLCJlcnJvciI6bnVsbH0K","FilePath":".\\Test Case-14bK8t75a2spnpLTzR4Z7h-disconnect.json","Mode":"binary"},
+        "ResponseTime": 0,
+        "ReasonPhrase": "OK"
+      }
+    },
+    "go3979sFnhAY8iaimVx3f": {
+      "variables": {
+        "RequestUrl": "http://localhost:8081/5956/users/add",
+        "RequestVerb": "POST",
+        "RequestHeaders": {"X-API-Key":"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C","User-Agent":"Telerik Test Studio for APIs","Host":"localhost:8081","Content-Length":"212"},
+        "RequestBody": {"Content":"ew0KCSJpZCI6IDcwMSwNCgkicGFzc3dvcmQiOiAxMjM0NTYsDQoJImNhcmRfY29kZSI6IDU1NTUsDQoJIm5hbWUiOiAiVGVzdDEiLA0KCSJkZXBhcnRtZW50IjogMCwNCgkiZ3JvdXAiOiAwLA0KCSJhdHRlbmRhbmNlX21vZGUiOiA2LA0KCSJyZWdpc3RlcmVkX2ZwIjogMCwNCgkia2VlcCI6IDAsDQoJInNwZWNpYWxfaW5mbyI6IDY0LA0KCSJpc19hZG1pbiI6IHRydWUNCn0=","FilePath":".\\Test Case-4x32X5zVn6ZuzEHyf8xsiW-request.txt","Mode":"binary"},
+        "RequestCookies": [],
+        "StatusCode": 200,
+        "Headers": {"Content-Length":"27","Content-Type":"application/json; charset=utf-8","Date":"Mon, 16 Dec 2019 06:23:42 GMT"},
+        "Body": {"Content":"eyJkYXRhIjpudWxsLCJlcnJvciI6bnVsbH0K","FilePath":".\\Test Case-4x32X5zVn6ZuzEHyf8xsiW-add.json","Mode":"binary"},
+        "ResponseTime": 337,
+        "ReasonPhrase": "OK"
+      }
+    },
+    "5rIUf3fBHtsohurlImv2gW": {
+      "variables": {
+        "RequestUrl": "http://localhost:8081/5956/users/701/modify",
+        "RequestVerb": "POST",
+        "RequestHeaders": {"X-API-Key":"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C","User-Agent":"Telerik Test Studio for APIs","Host":"localhost:8081","Content-Length":"201"},
+        "RequestBody": {"Content":"ew0KCSJwYXNzd29yZCI6IDEyMzQ1NiwNCgkiY2FyZF9jb2RlIjogNTU1NSwNCgkibmFtZSI6ICJUZXN0MTE1IiwNCgkiZGVwYXJ0bWVudCI6IDAsDQoJImdyb3VwIjogMCwNCgkiYXR0ZW5kYW5jZV9tb2RlIjogNiwNCgkicmVnaXN0ZXJlZF9mcCI6IDAsDQoJImtlZXAiOiAwLA0KCSJzcGVjaWFsX2luZm8iOiA2NCwNCgkiaXNfYWRtaW4iOiB0cnVlDQp9","FilePath":".\\Test Case-3piltDE41qijDtVsFz4Brv-request.txt","Mode":"binary"},
+        "RequestCookies": [],
+        "StatusCode": 200,
+        "Headers": {"Content-Length":"27","Content-Type":"application/json; charset=utf-8","Date":"Mon, 16 Dec 2019 06:23:44 GMT"},
+        "Body": {"Content":"eyJkYXRhIjpudWxsLCJlcnJvciI6bnVsbH0K","FilePath":".\\Test Case-3piltDE41qijDtVsFz4Brv-modify.json","Mode":"binary"},
+        "ResponseTime": 318,
+        "ReasonPhrase": "OK"
+      }
+    },
+    "7avoT8afhCViUkd9B6kXck": {
+      "variables": {
+        "RequestUrl": "http://localhost:8081/5956/users/",
+        "RequestVerb": "GET",
+        "RequestHeaders": {"X-API-Key":"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C","User-Agent":"Telerik Test Studio for APIs","Host":"localhost:8081"},
+        "RequestBody": null,
+        "RequestCookies": [],
+        "StatusCode": 200,
+        "Headers": {"Transfer-Encoding":"chunked","Content-Type":"application/json; charset=utf-8","Date":"Mon, 16 Dec 2019 06:23:46 GMT"},
+        "Body": {"Content":"eyJkYXRhIjpbeyJpZCI6MSwicGFzc3dvcmQiOjAsImNhcmRfY29kZSI6MSwibmFtZSI6IuStoeeJpea4gCIsImRlcGFydG1lbnQiOjAsImdyb3VwIjowLCJhdHRlbmRhbmNlX21vZGUiOjYsInJlZ2lzdGVyZWRfZnAiOjAsImtlZXAiOjkxLCJzcGVjaWFsX2luZm8iOjY0LCJpc19hZG1pbiI6ZmFsc2V9LHsiaWQiOjExLCJwYXNzd29yZCI6MCwiY2FyZF9jb2RlIjoxMjkxMjIyNSwibmFtZSI6ItCi0LXRgdGCIiwiZGVwYXJ0bWVudCI6MCwiZ3JvdXAiOjAsImF0dGVuZGFuY2VfbW9kZSI6MjQ4LCJyZWdpc3RlcmVkX2ZwIjowLCJrZWVwIjo0NSwic3BlY2lhbF9pbmZvIjo2NCwiaXNfYWRtaW4iOmZhbHNlfSx7ImlkIjoxMiwicGFzc3dvcmQiOjEzMDM5NywiY2FyZF9jb2RlIjoxMzAzOTcyMCwibmFtZSI6ItCS0LjQutGC0L7RgNC40Y8iLCJkZXBhcnRtZW50IjowLCJncm91cCI6MCwiYXR0ZW5kYW5jZV9tb2RlIjoyNDgsInJlZ2lzdGVyZWRfZnAiOjAsImtlZXAiOjgsInNwZWNpYWxfaW5mbyI6NjQsImlzX2FkbWluIjpmYWxzZX0seyJpZCI6MTcsInBhc3N3b3JkIjowLCJjYXJkX2NvZGUiOjQ2MTg0MTcsIm5hbWUiOiJNYWtzaW0iLCJkZXBhcnRtZW50IjowLCJncm91cCI6MSwiYXR0ZW5kYW5jZV9tb2RlIjoyNDgsInJlZ2lzdGVyZWRfZnAiOjAsImtlZXAiOjgsInNwZWNpYWxfaW5mbyI6NjQsImlzX2FkbWluIjpmYWxzZX0seyJpZCI6NDQsInBhc3N3b3JkIjowLCJjYXJkX2NvZGUiOjEyOTEyMjI1LCJuYW1lIjoi5Iqz5rGv55Wz4rWPIiwiZGVwYXJ0bWVudCI6MCwiZ3JvdXAiOjAsImF0dGVuZGFuY2VfbW9kZSI6NiwicmVnaXN0ZXJlZF9mcCI6MCwia2VlcCI6MCwic3BlY2lhbF9pbmZvIjo2NCwiaXNfYWRtaW4iOmZhbHNlfSx7ImlkIjo0NiwicGFzc3dvcmQiOjAsImNhcmRfY29kZSI6MTMwODcyNDIsIm5hbWUiOiLlkaHniaHnkbXnkaUiLCJkZXBhcnRtZW50IjowLCJncm91cCI6MCwiYXR0ZW5kYW5jZV9tb2RlIjo2LCJyZWdpc3RlcmVkX2ZwIjowLCJrZQ==","FilePath":".\\Test Case-2hBJHcAIbLURpsTPpVaRaC-tmp8E8A.json","Mode":"binary"},
+        "ResponseTime": 2029,
+        "ReasonPhrase": "OK"
+      }
+    },
+    "2W6QLmH0BCTTgusZFHnKe2": {
+      "variables": {
+        "RequestUrl": "http://localhost:8081/5956/users/701/delete?backup=255",
+        "RequestVerb": "GET",
+        "RequestHeaders": {"X-API-Key":"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C","User-Agent":"Telerik Test Studio for APIs","Host":"localhost:8081"},
+        "RequestBody": null,
+        "RequestCookies": [],
+        "StatusCode": 200,
+        "Headers": {"Content-Length":"27","Content-Type":"application/json; charset=utf-8","Date":"Mon, 16 Dec 2019 06:23:46 GMT"},
+        "Body": {"Content":"eyJkYXRhIjpudWxsLCJlcnJvciI6bnVsbH0K","FilePath":".\\Test Case-4gi0hJcBQGUjIcB6eYJ1W-delete.json","Mode":"binary"},
+        "ResponseTime": 354,
+        "ReasonPhrase": "OK"
+      }
+    },
+    "68qmq6pYykLPmhByWhtyJ1": {
+      "variables": {
+        "RequestUrl": "http://localhost:8081/5956/users/",
+        "RequestVerb": "GET",
+        "RequestHeaders": {"X-API-Key":"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C","User-Agent":"Telerik Test Studio for APIs","Host":"localhost:8081"},
+        "RequestBody": null,
+        "RequestCookies": [],
+        "StatusCode": 200,
+        "Headers": {"Transfer-Encoding":"chunked","Content-Type":"application/json; charset=utf-8","Date":"Mon, 16 Dec 2019 06:23:48 GMT"},
+        "Body": {"Content":"eyJkYXRhIjpbeyJpZCI6MSwicGFzc3dvcmQiOjAsImNhcmRfY29kZSI6MSwibmFtZSI6IuStoeeJpea4gCIsImRlcGFydG1lbnQiOjAsImdyb3VwIjowLCJhdHRlbmRhbmNlX21vZGUiOjYsInJlZ2lzdGVyZWRfZnAiOjAsImtlZXAiOjgsInNwZWNpYWxfaW5mbyI6NjQsImlzX2FkbWluIjpmYWxzZX0seyJpZCI6MTEsInBhc3N3b3JkIjowLCJjYXJkX2NvZGUiOjEyOTEyMjI1LCJuYW1lIjoi0KLQtdGB0YIiLCJkZXBhcnRtZW50IjowLCJncm91cCI6MCwiYXR0ZW5kYW5jZV9tb2RlIjoyNDgsInJlZ2lzdGVyZWRfZnAiOjAsImtlZXAiOjAsInNwZWNpYWxfaW5mbyI6NjQsImlzX2FkbWluIjpmYWxzZX0seyJpZCI6MTIsInBhc3N3b3JkIjoxMzAzOTcsImNhcmRfY29kZSI6MTMwMzk3MjAsIm5hbWUiOiLQktC40LrRgtC+0YDQuNGPIiwiZGVwYXJ0bWVudCI6MCwiZ3JvdXAiOjAsImF0dGVuZGFuY2VfbW9kZSI6MjQ4LCJyZWdpc3RlcmVkX2ZwIjowLCJrZWVwIjo5MSwic3BlY2lhbF9pbmZvIjo2NCwiaXNfYWRtaW4iOmZhbHNlfSx7ImlkIjoxNywicGFzc3dvcmQiOjAsImNhcmRfY29kZSI6NDYxODQxNywibmFtZSI6Ik1ha3NpbSIsImRlcGFydG1lbnQiOjAsImdyb3VwIjoxLCJhdHRlbmRhbmNlX21vZGUiOjI0OCwicmVnaXN0ZXJlZF9mcCI6MCwia2VlcCI6OCwic3BlY2lhbF9pbmZvIjo2NCwiaXNfYWRtaW4iOmZhbHNlfSx7ImlkIjo0NCwicGFzc3dvcmQiOjAsImNhcmRfY29kZSI6MTI5MTIyMjUsIm5hbWUiOiLkirPmsa/nlbPitY8iLCJkZXBhcnRtZW50IjowLCJncm91cCI6MCwiYXR0ZW5kYW5jZV9tb2RlIjo2LCJyZWdpc3RlcmVkX2ZwIjowLCJrZWVwIjowLCJzcGVjaWFsX2luZm8iOjY0LCJpc19hZG1pbiI6ZmFsc2V9LHsiaWQiOjQ2LCJwYXNzd29yZCI6MCwiY2FyZF9jb2RlIjoxMzA4NzI0MiwibmFtZSI6IuWRoeeJoeeRteeRpSIsImRlcGFydG1lbnQiOjAsImdyb3VwIjowLCJhdHRlbmRhbmNlX21vZGUiOjYsInJlZ2lzdGVyZWRfZnAiOjAsImtlZQ==","FilePath":".\\Test Case-Ay43HbSj3RHQEmIGpiwDJ-tmp97D2.json","Mode":"binary"},
+        "ResponseTime": 2013,
+        "ReasonPhrase": "OK"
+      }
+    },
+    "3jOQQf6ZK86tL1AInlO19Z": {
+      "variables": {
+        "RequestUrl": "http://localhost:8081/5956/records?new_only=0",
+        "RequestVerb": "GET",
+        "RequestHeaders": {"X-API-Key":"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C","User-Agent":"Telerik Test Studio for APIs","Host":"localhost:8081"},
+        "RequestBody": null,
+        "RequestCookies": [],
+        "StatusCode": 200,
+        "Headers": {"Transfer-Encoding":"chunked","Content-Type":"application/json; charset=utf-8","Date":"Mon, 16 Dec 2019 06:23:41 GMT"},
+        "Body": {"Content":"eyJkYXRhIjpbeyJ1c2VyX2lkIjoyLCJkYXRldGltZSI6IjI5LTA4LTIwMTkgMTg6MTk6NTYiLCJiYWNrdXBfY29kZSI6NCwidHlwZSI6Im91dCIsImF0dGVuZGFuY2VfbW9kZSI6MCwid29ya190eXBlcyI6MH0seyJ1c2VyX2lkIjoyLCJkYXRldGltZSI6IjI5LTA4LTIwMTkgMTg6MjA6MTAiLCJiYWNrdXBfY29kZSI6NCwidHlwZSI6ImluIiwiYXR0ZW5kYW5jZV9tb2RlIjowLCJ3b3JrX3R5cGVzIjowfSx7InVzZXJfaWQiOjIsImRhdGV0aW1lIjoiMjktMDgtMjAxOSAxODoyMDozMSIsImJhY2t1cF9jb2RlIjo0LCJ0eXBlIjoib3V0IiwiYXR0ZW5kYW5jZV9tb2RlIjowLCJ3b3JrX3R5cGVzIjowfSx7InVzZXJfaWQiOjEyLCJkYXRldGltZSI6IjIwLTEwLTIwMTkgMTc6Mzk6MDciLCJiYWNrdXBfY29kZSI6OCwidHlwZSI6Im91dCIsImF0dGVuZGFuY2VfbW9kZSI6MCwid29ya190eXBlcyI6MH0seyJ1c2VyX2lkIjoxMSwiZGF0ZXRpbWUiOiIyMC0xMC0yMDE5IDE3OjM5OjE0IiwiYmFja3VwX2NvZGUiOjgsInR5cGUiOiJvdXQiLCJhdHRlbmRhbmNlX21vZGUiOjAsIndvcmtfdHlwZXMiOjB9LHsidXNlcl9pZCI6MTIsImRhdGV0aW1lIjoiMjAtMTAtMjAxOSAxNzozOToxOSIsImJhY2t1cF9jb2RlIjo4LCJ0eXBlIjoib3V0IiwiYXR0ZW5kYW5jZV9tb2RlIjowLCJ3b3JrX3R5cGVzIjowfSx7InVzZXJfaWQiOjExLCJkYXRldGltZSI6IjIwLTEwLTIwMTkgMTc6Mzk6MjUiLCJiYWNrdXBfY29kZSI6OCwidHlwZSI6Im91dCIsImF0dGVuZGFuY2VfbW9kZSI6MCwid29ya190eXBlcyI6MH0seyJ1c2VyX2lkIjo2MDUsImRhdGV0aW1lIjoiMDYtMTEtMjAxOSAxMjoyMDoxMyIsImJhY2t1cF9jb2RlIjo4LCJ0eXBlIjoib3V0IiwiYXR0ZW5kYW5jZV9tb2RlIjowLCJ3b3JrX3R5cGVzIjowfSx7InVzZXJfaWQiOjQzMCwiZGF0ZXRpbWUiOiIwNi0xMS0yMDE5IDEyOjIwOjE5IiwiYmFja3VwX2NvZGUiOjgsInR5cGUiOiJvdXQiLCJhdHRlbmRhbmNlX21vZGUiOjAsIg==","FilePath":".\\Test Case-2xSRjHo8Y3rMJRqHn9TgtY-records.json","Mode":"binary"},
+        "ResponseTime": 20241,
+        "ReasonPhrase": "OK"
+      }
+    },
+    "1LGnJutlp8ZfLhHbT66hX5": {
+      "variables": {
+        "RequestUrl": "http://localhost:8081/5956/clear_new_records?count=1",
+        "RequestVerb": "GET",
+        "RequestHeaders": {"X-API-Key":"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C","User-Agent":"Telerik Test Studio for APIs","Host":"localhost:8081"},
+        "RequestBody": null,
+        "RequestCookies": [],
+        "StatusCode": 200,
+        "Headers": {"Content-Length":"24","Content-Type":"application/json; charset=utf-8","Date":"Mon, 16 Dec 2019 06:23:20 GMT"},
+        "Body": {"Content":"eyJkYXRhIjoxLCJlcnJvciI6bnVsbH0K","FilePath":".\\Test Case-5r7JN8Tiy4vROrnsWOnwyx-clear_new_records.json","Mode":"binary"},
+        "ResponseTime": 314,
+        "ReasonPhrase": "OK"
+      }
+    },
+    "1hLqiuCk43wiKP2oR5lwRb": {
+      "variables": {
+        "RequestUrl": "http://localhost:8081/5956/status",
+        "RequestVerb": "GET",
+        "RequestHeaders": {"X-API-Key":"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C","User-Agent":"Telerik Test Studio for APIs","Host":"localhost:8081"},
+        "RequestBody": null,
+        "RequestCookies": [],
+        "StatusCode": 200,
+        "Headers": {"Content-Length":"209","Content-Type":"application/json; charset=utf-8","Date":"Mon, 16 Dec 2019 06:23:21 GMT"},
+        "Body": {"Content":"eyJkYXRhIjp7InJlY29yZHMiOnsidXNlcnMiOjM0LCJmaW5nZXJwcmludHMiOjAsInBhc3N3b3JkcyI6MiwiY2FyZHMiOjMzLCJhbGwiOjE0NzksIm5ldyI6M30sImNhcGFjaXR5Ijp7InVzZXJzIjozMDAwLCJmaW5nZXJwcmludHMiOjMwMDAsInJlY29yZHMiOjEwMDAwMH0sInN0YXRlIjp7ImNvZGUiOjEsInRleHQiOiJjb25uZWN0ZWQifX0sImVycm9yIjpudWxsfQo=","FilePath":".\\Test Case-6TqNo6QjFlIw9M5uqpJtlv-status.json","Mode":"binary"},
+        "ResponseTime": 582,
+        "ReasonPhrase": "OK"
+      }
+    }
+  }
+}

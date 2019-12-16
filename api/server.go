@@ -22,6 +22,10 @@ var (
 	ErrUserNotFound   = errors.New("user not found", 405)
 )
 
+var (
+	tokenAuth string
+)
+
 type devices struct {
 	items map[uint32]*device.Device
 	hosts map[string]uint32
@@ -133,7 +137,7 @@ func baseMiddleware(next http.Handler) http.Handler {
 		}()
 
 		key := r.Header.Get("X-API-Key")
-		if key != "DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C" {
+		if key != tokenAuth {
 			resp.Error = ErrForbidden
 			return
 		}
@@ -589,7 +593,8 @@ func clearNewRecords(w http.ResponseWriter, r *http.Request) {
 	resp.Data = total
 }
 
-func RunServer(address string) {
+func RunServer(address string, token string) {
+	tokenAuth = token
 	r := mux.NewRouter().Methods("GET", "POST").Subrouter()
 	r.Use(baseMiddleware)
 	r.HandleFunc("/connect", connect)

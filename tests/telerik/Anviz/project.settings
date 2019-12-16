@@ -1,0 +1,9 @@
+{
+  "$version": "project-settings/v1",
+  "projectLanguage": "notset",
+  "projectReferences": [],
+  "skipCertificateValidation": false,
+  "variables": {
+    "base-url": "http://localhost:8081"
+  }
+}

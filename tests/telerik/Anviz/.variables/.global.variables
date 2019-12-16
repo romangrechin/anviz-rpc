@@ -1,0 +1,8 @@
+{
+  "$version": "runtime-variables/v1",
+  "scopes": {
+    ".global": {
+      "variables": {}
+    }
+  }
+}

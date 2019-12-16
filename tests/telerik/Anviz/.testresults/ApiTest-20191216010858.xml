@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<run passed="1" failed="0" unexecuted="0" time="8517" total="1">
+  <tests>
+    <test key=".\Test Case" name="Test Case" outcome="passed" time="8325">
+      <step id="2HT7PdPw7GHgJu6q7cLdks" name="Connect" outcome="passed" time="499">
+        <action id="5PGezbbXIZjCCCdgivTXK5" type="http-request" outcome="passed" time="473" />
+        <action id="7fStb5a2YfIpLrdMswVz1l" type="verify" outcome="passed" time="19" />
+      </step>
+      <step id="5NgA3r5LauGBu2e8DowXNq" name="State" outcome="passed" time="1">
+        <action id="2yoXLvTZe6LgKAEuWKEfJt" type="http-request" outcome="passed" time="0" />
+      </step>
+      <step id="aCIYFbxWO2HHSUIx5IeIN" name="Status" outcome="passed" time="557">
+        <action id="1C6gMUkQbFgnFf7I8HyGYm" type="http-request" outcome="passed" time="557" />
+      </step>
+      <step id="64u428RcI1JnP6fFT74YDn" name="GetTime" outcome="passed" time="264">
+        <action id="SJ5seSVRcyS06xZM2NOWG" type="http-request" outcome="passed" time="264" />
+      </step>
+      <step id="go3979sFnhAY8iaimVx3f" name="AddUser" outcome="passed" time="333">
+        <action id="4x32X5zVn6ZuzEHyf8xsiW" type="http-request" outcome="passed" time="332" />
+      </step>
+      <step id="7aOBo5o5u8VV6lQj61nUX2" name="GetUsers" outcome="passed" time="1989">
+        <action id="6Ui3eYoMWmZXHC8j609wfI" type="http-request" outcome="passed" time="1989" />
+      </step>
+      <step id="5rIUf3fBHtsohurlImv2gW" name="ModifyUser" outcome="passed" time="314">
+        <action id="3piltDE41qijDtVsFz4Brv" type="http-request" outcome="passed" time="314" />
+      </step>
+      <step id="7avoT8afhCViUkd9B6kXck" name="GetUsers" outcome="passed" time="1993">
+        <action id="2hBJHcAIbLURpsTPpVaRaC" type="http-request" outcome="passed" time="1993" />
+      </step>
+      <step id="2W6QLmH0BCTTgusZFHnKe2" name="DeleteUser" outcome="passed" time="351">
+        <action id="4gi0hJcBQGUjIcB6eYJ1W" type="http-request" outcome="passed" time="351" />
+      </step>
+      <step id="68qmq6pYykLPmhByWhtyJ1" name="GetUsers" outcome="passed" time="2014">
+        <action id="Ay43HbSj3RHQEmIGpiwDJ" type="http-request" outcome="passed" time="2014" />
+      </step>
+      <step id="49WJHCQDv4jDemawuZModA" name="Disconnect" outcome="passed" time="1">
+        <action id="14bK8t75a2spnpLTzR4Z7h" type="http-request" outcome="passed" time="1" />
+      </step>
+    </test>
+  </tests>
+  <output>
+    <output message="Executing HTTP Request: POST http://localhost:8081/connect" />
+    <output message="Response received with status code: 200 OK" />
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/state" />
+    <output message="Response received with status code: 200 OK" />
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/status" />
+    <output message="Response received with status code: 200 OK" />
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/datetime" />
+    <output message="Response received with status code: 200 OK" />
+    <output message="Executing HTTP Request: POST http://localhost:8081/5956/users/add" />
+    <output message="Response received with status code: 200 OK" />
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/users/" />
+    <output message="Response received with status code: 200 OK" />
+    <output message="Executing HTTP Request: POST http://localhost:8081/5956/users/701/modify" />
+    <output message="Response received with status code: 200 OK" />
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/users/" />
+    <output message="Response received with status code: 200 OK" />
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/users/701/delete?backup=255" />
+    <output message="Response received with status code: 200 OK" />
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/users/" />
+    <output message="Response received with status code: 200 OK" />
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/disconnect" />
+    <output message="Response received with status code: 200 OK" />
+  </output>
+  <errors />
+</run>

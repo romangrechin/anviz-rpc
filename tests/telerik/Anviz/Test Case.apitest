@@ -1,0 +1,267 @@
+{
+  "$version": "test-case/v1",
+  "steps": [
+    {
+      "key": "2HT7PdPw7GHgJu6q7cLdks",
+      "name": "Connect",
+      "action": {
+        "key": "5PGezbbXIZjCCCdgivTXK5",
+        "type": "http-request",
+        "properties": {
+          "Method": "POST",
+          "Body": "{\"Content\":\"{\\r\\n\\t\\\"host\\\": \\\"194.183.171.92:5010\\\"\\r\\n}\",\"FilePath\":null,\"Mode\":\"raw\"}",
+          "Url": "{{base-url}}/connect",
+          "Timeout": 60000,
+          "Headers": "[{\"X-API-Key\":\"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C\"}]"
+        }
+      },
+      "verifications": [
+        {
+          "key": "7fStb5a2YfIpLrdMswVz1l",
+          "type": "verify",
+          "properties": {
+            "SourceVariable": "StatusCode",
+            "Expectation": 200,
+            "OperationType": "is-equal-number"
+          }
+        }
+      ]
+    },
+    {
+      "key": "5NgA3r5LauGBu2e8DowXNq",
+      "name": "State",
+      "action": {
+        "key": "2yoXLvTZe6LgKAEuWKEfJt",
+        "type": "http-request",
+        "properties": {
+          "Method": "GET",
+          "Body": "{\"Content\":null,\"FilePath\":null,\"Mode\":\"raw\"}",
+          "Url": "{{base-url}}/5956/state",
+          "Headers": "[{\"X-API-Key\":\"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C\"}]"
+        }
+      },
+      "verifications": []
+    },
+    {
+      "key": "aCIYFbxWO2HHSUIx5IeIN",
+      "name": "Status",
+      "action": {
+        "key": "1C6gMUkQbFgnFf7I8HyGYm",
+        "type": "http-request",
+        "properties": {
+          "Method": "GET",
+          "Body": "{\"Content\":null,\"FilePath\":null,\"Mode\":\"raw\"}",
+          "Url": "{{base-url}}/5956/status",
+          "Headers": "[{\"X-API-Key\":\"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C\"}]"
+        }
+      },
+      "verifications": []
+    },
+    {
+      "key": "1LGnJutlp8ZfLhHbT66hX5",
+      "name": "ClearNewRecords",
+      "action": {
+        "key": "5r7JN8Tiy4vROrnsWOnwyx",
+        "type": "http-request",
+        "properties": {
+          "Method": "GET",
+          "Body": "{\"Content\":null,\"FilePath\":null,\"Mode\":\"raw\"}",
+          "Url": "{{base-url}}/5956/clear_new_records?count=1",
+          "Headers": "[{\"X-API-Key\":\"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C\"}]",
+          "Timeout": 60000
+        }
+      },
+      "verifications": []
+    },
+    {
+      "key": "1hLqiuCk43wiKP2oR5lwRb",
+      "name": "Status",
+      "action": {
+        "key": "6TqNo6QjFlIw9M5uqpJtlv",
+        "type": "http-request",
+        "properties": {
+          "Method": "GET",
+          "Body": "{\"Content\":null,\"FilePath\":null,\"Mode\":\"raw\"}",
+          "Url": "{{base-url}}/5956/status",
+          "Headers": "[{\"X-API-Key\":\"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C\"}]"
+        }
+      },
+      "verifications": []
+    },
+    {
+      "key": "3jOQQf6ZK86tL1AInlO19Z",
+      "name": "GetRecords",
+      "action": {
+        "key": "2xSRjHo8Y3rMJRqHn9TgtY",
+        "type": "http-request",
+        "properties": {
+          "Method": "GET",
+          "Body": "{\"Content\":null,\"FilePath\":null,\"Mode\":\"raw\"}",
+          "Url": "{{base-url}}/5956/records?new_only=0",
+          "Headers": "[{\"X-API-Key\":\"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C\"}]",
+          "Timeout": 60000
+        }
+      },
+      "verifications": []
+    },
+    {
+      "key": "64u428RcI1JnP6fFT74YDn",
+      "name": "GetTime",
+      "action": {
+        "key": "SJ5seSVRcyS06xZM2NOWG",
+        "type": "http-request",
+        "properties": {
+          "Method": "GET",
+          "Body": "{\"Content\":null,\"FilePath\":null,\"Mode\":\"raw\"}",
+          "Url": "{{base-url}}/5956/datetime",
+          "Headers": "[{\"X-API-Key\":\"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C\"}]"
+        }
+      },
+      "verifications": []
+    },
+    {
+      "key": "go3979sFnhAY8iaimVx3f",
+      "name": "AddUser",
+      "action": {
+        "key": "4x32X5zVn6ZuzEHyf8xsiW",
+        "type": "http-request",
+        "properties": {
+          "Method": "POST",
+          "Body": "{\"Content\":\"{\\r\\n\\t\\\"id\\\": 701,\\r\\n\\t\\\"password\\\": 123456,\\r\\n\\t\\\"card_code\\\": 5555,\\r\\n\\t\\\"name\\\": \\\"Test1\\\",\\r\\n\\t\\\"department\\\": 0,\\r\\n\\t\\\"group\\\": 0,\\r\\n\\t\\\"attendance_mode\\\": 6,\\r\\n\\t\\\"registered_fp\\\": 0,\\r\\n\\t\\\"keep\\\": 0,\\r\\n\\t\\\"special_info\\\": 64,\\r\\n\\t\\\"is_admin\\\": true\\r\\n}\",\"FilePath\":null,\"Mode\":\"raw\"}",
+          "Url": "{{base-url}}/5956/users/add",
+          "Headers": "[{\"X-API-Key\":\"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C\"}]",
+          "Timeout": 60000
+        }
+      },
+      "verifications": []
+    },
+    {
+      "key": "7aOBo5o5u8VV6lQj61nUX2",
+      "name": "GetUsers",
+      "action": {
+        "key": "6Ui3eYoMWmZXHC8j609wfI",
+        "type": "http-request",
+        "properties": {
+          "Method": "GET",
+          "Body": "{\"Content\":null,\"FilePath\":null,\"Mode\":\"raw\"}",
+          "Url": "{{base-url}}/5956/users/",
+          "Headers": "[{\"X-API-Key\":\"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C\"}]",
+          "Timeout": 60000
+        }
+      },
+      "verifications": []
+    },
+    {
+      "key": "5rIUf3fBHtsohurlImv2gW",
+      "name": "ModifyUser",
+      "action": {
+        "key": "3piltDE41qijDtVsFz4Brv",
+        "type": "http-request",
+        "properties": {
+          "Method": "POST",
+          "Body": "{\"Content\":\"{\\r\\n\\t\\\"password\\\": 123456,\\r\\n\\t\\\"card_code\\\": 5555,\\r\\n\\t\\\"name\\\": \\\"Test115\\\",\\r\\n\\t\\\"department\\\": 0,\\r\\n\\t\\\"group\\\": 0,\\r\\n\\t\\\"attendance_mode\\\": 6,\\r\\n\\t\\\"registered_fp\\\": 0,\\r\\n\\t\\\"keep\\\": 0,\\r\\n\\t\\\"special_info\\\": 64,\\r\\n\\t\\\"is_admin\\\": true\\r\\n}\",\"FilePath\":null,\"Mode\":\"raw\"}",
+          "Url": "{{base-url}}/5956/users/701/modify",
+          "Headers": "[{\"X-API-Key\":\"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C\"}]",
+          "Timeout": 60000
+        }
+      },
+      "verifications": []
+    },
+    {
+      "key": "7avoT8afhCViUkd9B6kXck",
+      "name": "GetUsers",
+      "action": {
+        "key": "2hBJHcAIbLURpsTPpVaRaC",
+        "type": "http-request",
+        "properties": {
+          "Method": "GET",
+          "Body": "{\"Content\":null,\"FilePath\":null,\"Mode\":\"raw\"}",
+          "Url": "{{base-url}}/5956/users/",
+          "Headers": "[{\"X-API-Key\":\"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C\"}]",
+          "Timeout": 60000
+        }
+      },
+      "verifications": []
+    },
+    {
+      "key": "2W6QLmH0BCTTgusZFHnKe2",
+      "name": "DeleteUser",
+      "action": {
+        "key": "4gi0hJcBQGUjIcB6eYJ1W",
+        "type": "http-request",
+        "properties": {
+          "Method": "GET",
+          "Body": "{\"Content\":\"{\\r\\n\\t\\\"password\\\": 123456,\\r\\n\\t\\\"card_code\\\": 5555,\\r\\n\\t\\\"name\\\": \\\"Test126\\\",\\r\\n\\t\\\"department\\\": 0,\\r\\n\\t\\\"group\\\": 0,\\r\\n\\t\\\"attendance_mode\\\": 6,\\r\\n\\t\\\"registered_fp\\\": 0,\\r\\n\\t\\\"keep\\\": 0,\\r\\n\\t\\\"special_info\\\": 64,\\r\\n\\t\\\"is_admin\\\": true\\r\\n}\",\"FilePath\":null,\"Mode\":\"raw\"}",
+          "Url": "{{base-url}}/5956/users/701/delete?backup=255",
+          "Headers": "[{\"X-API-Key\":\"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C\"}]",
+          "Timeout": 60000
+        }
+      },
+      "verifications": []
+    },
+    {
+      "key": "68qmq6pYykLPmhByWhtyJ1",
+      "name": "GetUsers",
+      "action": {
+        "key": "Ay43HbSj3RHQEmIGpiwDJ",
+        "type": "http-request",
+        "properties": {
+          "Method": "GET",
+          "Body": "{\"Content\":null,\"FilePath\":null,\"Mode\":\"raw\"}",
+          "Url": "{{base-url}}/5956/users/",
+          "Headers": "[{\"X-API-Key\":\"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C\"}]",
+          "Timeout": 60000
+        }
+      },
+      "verifications": []
+    },
+    {
+      "key": "4jBxc5Xm6JbW9jnA7GGKpA",
+      "ignored": true,
+      "name": "SetTime",
+      "action": {
+        "key": "5WK7C5tqUzCkXH0aBnEr84",
+        "type": "http-request",
+        "properties": {
+          "Method": "POST",
+          "Body": "{\"Content\":\"{\\\"date_time\\\":\\\"15-12-2019 16:13:00\\\"}\",\"FilePath\":null,\"Mode\":\"raw\"}",
+          "Url": "{{base-url}}/5956/datetime",
+          "Headers": "[{\"X-API-Key\":\"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C\"}]"
+        }
+      },
+      "verifications": []
+    },
+    {
+      "key": "52ggBfeCkD73ELGUlG6eqe",
+      "ignored": true,
+      "name": "GetTime",
+      "action": {
+        "key": "1y32Cf6OmyLSHn7jRoKvAr",
+        "type": "http-request",
+        "properties": {
+          "Method": "GET",
+          "Body": "{\"Content\":null,\"FilePath\":null,\"Mode\":\"raw\"}",
+          "Url": "{{base-url}}/5956/datetime",
+          "Headers": "[{\"X-API-Key\":\"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C\"}]"
+        }
+      },
+      "verifications": []
+    },
+    {
+      "key": "49WJHCQDv4jDemawuZModA",
+      "name": "Disconnect",
+      "action": {
+        "key": "14bK8t75a2spnpLTzR4Z7h",
+        "type": "http-request",
+        "properties": {
+          "Method": "GET",
+          "Body": "{\"Content\":null,\"FilePath\":null,\"Mode\":\"raw\"}",
+          "Url": "{{base-url}}/5956/disconnect",
+          "Headers": "[{\"X-API-Key\":\"DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C\"}]"
+        }
+      },
+      "verifications": []
+    }
+  ],
+  "variables": {}
+}

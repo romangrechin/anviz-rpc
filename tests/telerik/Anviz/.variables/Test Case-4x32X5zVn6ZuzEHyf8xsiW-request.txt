@@ -1,0 +1,13 @@
+{
+	"id": 701,
+	"password": 123456,
+	"card_code": 5555,
+	"name": "Test1",
+	"department": 0,
+	"group": 0,
+	"attendance_mode": 6,
+	"registered_fp": 0,
+	"keep": 0,
+	"special_info": 64,
+	"is_admin": true
+}

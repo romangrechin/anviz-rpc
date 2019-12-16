@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<run passed="1" failed="0" unexecuted="0" time="613" total="1">
+  <tests>
+    <test key=".\Test Case" name="Test Case" outcome="passed" time="495">
+      <step id="2HT7PdPw7GHgJu6q7cLdks" name="Http Request" outcome="passed" time="462">
+        <action id="5PGezbbXIZjCCCdgivTXK5" type="http-request" outcome="passed" time="443" />
+        <action id="7fStb5a2YfIpLrdMswVz1l" type="verify" outcome="passed" time="13" />
+      </step>
+    </test>
+  </tests>
+  <output>
+    <output message="Executing HTTP Request: POST http://localhost:8081/connect" />
+    <output message="Response received with status code: 200 OK" />
+  </output>
+  <errors />
+</run>

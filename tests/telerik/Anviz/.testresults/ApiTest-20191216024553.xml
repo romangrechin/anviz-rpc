@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<run passed="1" failed="0" unexecuted="0" time="2106" total="1">
+  <tests>
+    <test key=".\Test Case" name="Test Case" outcome="passed" time="1920">
+      <step id="2HT7PdPw7GHgJu6q7cLdks" name="Connect" outcome="passed" time="421">
+        <action id="5PGezbbXIZjCCCdgivTXK5" type="http-request" outcome="passed" time="397" />
+        <action id="7fStb5a2YfIpLrdMswVz1l" type="verify" outcome="passed" time="18" />
+      </step>
+      <step id="5NgA3r5LauGBu2e8DowXNq" name="State" outcome="passed" time="1">
+        <action id="2yoXLvTZe6LgKAEuWKEfJt" type="http-request" outcome="passed" time="1" />
+      </step>
+      <step id="aCIYFbxWO2HHSUIx5IeIN" name="Status" outcome="passed" time="492">
+        <action id="1C6gMUkQbFgnFf7I8HyGYm" type="http-request" outcome="passed" time="492" />
+      </step>
+      <step id="1LGnJutlp8ZfLhHbT66hX5" name="ClearNewRecords" outcome="passed" time="283">
+        <action id="5r7JN8Tiy4vROrnsWOnwyx" type="http-request" outcome="passed" time="283" />
+      </step>
+      <step id="1hLqiuCk43wiKP2oR5lwRb" name="Status" outcome="passed" time="489">
+        <action id="6TqNo6QjFlIw9M5uqpJtlv" type="http-request" outcome="passed" time="489" />
+      </step>
+      <step id="64u428RcI1JnP6fFT74YDn" name="GetTime" outcome="passed" time="226">
+        <action id="SJ5seSVRcyS06xZM2NOWG" type="http-request" outcome="passed" time="226" />
+      </step>
+    </test>
+  </tests>
+  <output>
+    <output message="Executing HTTP Request: POST http://localhost:8081/connect" />
+    <output message="Response received with status code: 200 OK" />
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/state" />
+    <output message="Response received with status code: 200 OK" />
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/status" />
+    <output message="Response received with status code: 200 OK" />
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/clear_new_records?count=1" />
+    <output message="Response received with status code: 200 OK" />
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/status" />
+    <output message="Response received with status code: 200 OK" />
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/datetime" />
+    <output message="Response received with status code: 200 OK" />
+  </output>
+  <errors />
+</run>

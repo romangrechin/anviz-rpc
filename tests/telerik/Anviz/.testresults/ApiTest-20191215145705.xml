@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<run passed="0" failed="1" unexecuted="0" time="4513" total="1">
+  <tests>
+    <test key=".\Test Case" name="Test Case" outcome="failed" time="4196">
+      <step id="2HT7PdPw7GHgJu6q7cLdks" name="Connect" outcome="failed" time="4192">
+        <action id="5PGezbbXIZjCCCdgivTXK5" type="http-request" outcome="failed" time="4186">
+          <error message="Невозможно соединиться с удаленным сервером" />
+        </action>
+      </step>
+    </test>
+  </tests>
+  <output />
+  <errors />
+</run>

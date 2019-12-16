@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<run passed="0" failed="1" unexecuted="0" time="2221" total="1">
+  <tests>
+    <test key=".\Test Case" name="Test Case" outcome="failed" time="2105">
+      <step id="2HT7PdPw7GHgJu6q7cLdks" name="Http Request" outcome="failed" time="2071">
+        <action id="5PGezbbXIZjCCCdgivTXK5" type="http-request" outcome="failed" time="2067">
+          <error message="The operation has timed-out." />
+        </action>
+      </step>
+    </test>
+  </tests>
+  <output>
+    <output message="Executing HTTP Request: POST http://localhost:8081/connect" />
+  </output>
+  <errors />
+</run>

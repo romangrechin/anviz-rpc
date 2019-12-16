@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<run passed="0" failed="1" unexecuted="0" time="3506" total="1">
+  <tests>
+    <test key=".\Test Case" name="Test Case" outcome="failed" time="3341">
+      <step id="2HT7PdPw7GHgJu6q7cLdks" name="Connect" outcome="passed" time="489">
+        <action id="5PGezbbXIZjCCCdgivTXK5" type="http-request" outcome="passed" time="464" />
+        <action id="7fStb5a2YfIpLrdMswVz1l" type="verify" outcome="passed" time="18" />
+      </step>
+      <step id="5NgA3r5LauGBu2e8DowXNq" name="State" outcome="passed" time="0">
+        <action id="2yoXLvTZe6LgKAEuWKEfJt" type="http-request" outcome="passed" time="0" />
+      </step>
+      <step id="aCIYFbxWO2HHSUIx5IeIN" name="Status" outcome="passed" time="563">
+        <action id="1C6gMUkQbFgnFf7I8HyGYm" type="http-request" outcome="passed" time="562" />
+      </step>
+      <step id="64u428RcI1JnP6fFT74YDn" name="GetTime" outcome="passed" time="267">
+        <action id="SJ5seSVRcyS06xZM2NOWG" type="http-request" outcome="passed" time="267" />
+      </step>
+      <step id="7aOBo5o5u8VV6lQj61nUX2" name="GetUsers" outcome="failed" time="2015">
+        <action id="6Ui3eYoMWmZXHC8j609wfI" type="http-request" outcome="failed" time="2015">
+          <error message="The operation has timed-out." />
+        </action>
+      </step>
+    </test>
+  </tests>
+  <output>
+    <output message="Executing HTTP Request: POST http://localhost:8081/connect" />
+    <output message="Response received with status code: 200 OK" />
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/state" />
+    <output message="Response received with status code: 200 OK" />
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/status" />
+    <output message="Response received with status code: 200 OK" />
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/datetime" />
+    <output message="Response received with status code: 200 OK" />
+    <output message="Executing HTTP Request: GET http://localhost:8081/5956/users/" />
+  </output>
+  <errors />
+</run>

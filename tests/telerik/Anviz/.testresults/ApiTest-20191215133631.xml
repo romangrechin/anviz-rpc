@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<run passed="0" failed="1" unexecuted="0" time="257" total="1">
+  <tests>
+    <test key=".\Test Case" name="Test Case" outcome="failed" time="134">
+      <step id="2HT7PdPw7GHgJu6q7cLdks" name="Connect" outcome="failed" time="100">
+        <action id="5PGezbbXIZjCCCdgivTXK5" type="http-request" outcome="failed" time="95">
+          <error message="Базовое соединение закрыто: Непредвиденная ошибка при приеме." />
+        </action>
+      </step>
+    </test>
+  </tests>
+  <output>
+    <output message="Executing HTTP Request: POST http://localhost:8081/connect" />
+  </output>
+  <errors />
+</run>
