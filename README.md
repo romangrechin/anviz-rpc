@@ -3,13 +3,11 @@ Http wrapper for anviz devices
 
 ## Запуск: 
 
-    anviz-rpc -host [[host]:port]
+    anviz-rpc -с [config file path]
 
 *Пример*: 
 
-    anviz-rpc -host localhost:8081
-
-    anviz-rpc -host :8081
+    anviz-rpc -c config.json
 
 ## Методы:
   Во все методы необходимо добавить заголовок авторизации: **X-API-Key** 
