@@ -77,6 +77,5 @@ Http wrapper for anviz devices
 			"work_types": 0
 		}
 	],
-	,
 	"error":null
     }
