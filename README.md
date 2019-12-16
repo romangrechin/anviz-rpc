@@ -38,3 +38,17 @@ Http wrapper for anviz devices
 Ответ:
 
     {"data":{"records":{"users":34,"fingerprints":0,"passwords":2,"cards":33,"all":1475,"new":0},"capacity":{"users":3000,"fingerprints":3000,"records":100000},"state":{"code":1,"text":"connected"}},"error":null}
+    
+  #### GET /[device_id:]/datetime
+Ответ:
+
+    {"data":{"datetime":"16-12-2019 04:46:50"},"error":null}
+   
+  #### POST /[device_id:]/datetime
+Тело запроса: 
+
+    {"datetime":"16-12-2019 04:46:50"}
+Ответ:
+     
+    {"data":null,"error":null}
+    
