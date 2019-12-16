@@ -79,3 +79,17 @@ Http wrapper for anviz devices
 	],
 	"error":null
     }
+  #### GET /[device_id:]/clear_new_records
+Параметры:
+  
+  - count - если больше 0, то снимает флаг **new** у заданного количества записей. Иначе: у всех
+  
+Ответ:
+
+- count > 0:
+  
+      {"data":1,"error":null}
+    
+- count == 0:
+ 
+       {"data":0,"error":null}
