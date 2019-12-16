@@ -59,25 +59,25 @@ Http wrapper for anviz devices
 Ответ:
 
     {
-	"data": [
-		{
-			"user_id": 2,
-			"datetime": "29-08-2019 18:19:56",
-			"backup_code": 4,
-			"type": "out",
-			"attendance_mode": 0,
-			"work_types": 0
-		},
-		{
-			"user_id": 2,
-			"datetime": "29-08-2019 18:20:10",
-			"backup_code": 4,
-			"type": "in",
-			"attendance_mode": 0,
-			"work_types": 0
-		}
-	],
-	"error":null
+        "data": [
+        {
+                "user_id": 2,
+                "datetime": "29-08-2019 18:19:56",
+                "backup_code": 4,
+                "type": "out",
+                "attendance_mode": 0,
+                "work_types": 0
+        },
+        {
+                "user_id": 2,
+                "datetime": "29-08-2019 18:20:10",
+                "backup_code": 4,
+                "type": "in",
+                "attendance_mode": 0,
+                "work_types": 0
+        }
+        ],
+        "error":null
     }
   #### GET /[device_id:]/clear_new_records
 Параметры:
@@ -98,33 +98,51 @@ Http wrapper for anviz devices
  Ответ:
  
       {
-	"data": [
-		{			
-		        "id": 11,
-			"password": 0,
-			"card_code": 12912225,
-			"name": "Тест",
-			"department": 0,
-			"group": 0,
-			"attendance_mode": 248,
-			"registered_fp": 0,
-			"keep": 45,
-			"special_info": 64,
-			"is_admin": false
-		},
-		{
-			"id": 12,
-			"password": 130397,
-			"card_code": 13039720,
-			"name": "Виктория",
-			"department": 0,
-			"group": 0,
-			"attendance_mode": 248,
-			"registered_fp": 0,
-			"keep": 8,
-			"special_info": 64,
-			"is_admin": false
-		}
-	],
-	"error":null
-    }
+    "data": [
+        {            
+            "id": 11,
+            "password": 0,
+            "card_code": 12912225,
+            "name": "Тест",
+            "department": 0,
+            "group": 0,
+            "attendance_mode": 248,
+            "registered_fp": 0,
+            "keep": 45,
+            "special_info": 64,
+            "is_admin": false
+        },
+        {
+            "id": 12,
+            "password": 130397,
+            "card_code": 13039720,
+            "name": "Виктория",
+            "department": 0,
+            "group": 0,
+            "attendance_mode": 248,
+            "registered_fp": 0,
+            "keep": 8,
+            "special_info": 64,
+            "is_admin": false
+        }
+    ],
+    "error":null
+}
+  #### POST /[device_id:]/users/add   
+  
+  Тело запроса:  
+  
+      {			
+	"id": 11,
+	"password": 0,
+	"card_code": 12912225,
+	"name": "Тест",
+	"department": 0,
+	"group": 0,
+	"attendance_mode": 248,
+	"registered_fp": 0,
+	"keep": 45,
+	"special_info": 64,
+	"is_admin": false
+      }
+      
