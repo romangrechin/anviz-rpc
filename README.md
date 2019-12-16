@@ -144,5 +144,5 @@ Http wrapper for anviz devices
         "keep": 45,
         "special_info": 64,
         "is_admin": false
-   }
+    }
       
