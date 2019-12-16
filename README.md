@@ -75,5 +75,8 @@ Http wrapper for anviz devices
 			"type": "in",
 			"attendance_mode": 0,
 			"work_types": 0
-		},
-	}
+		}
+	],
+	,
+	"error":null
+    }
