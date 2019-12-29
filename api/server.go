@@ -24,7 +24,13 @@ var (
 
 var (
 	tokenAuth string
+	server    *http.Server
 )
+
+type deviceListItem struct {
+	Id uint32 `json:"id"`
+	Ip string `json:"ip"`
+}
 
 type devices struct {
 	items map[uint32]*device.Device
@@ -118,6 +124,46 @@ func (ds *devices) RemoveById(id uint32) (err error) {
 
 	delete(ds.hosts, host)
 	return nil
+}
+
+func (ds *devices) DisconnectAll() {
+	ds.mu.Lock()
+	defer ds.mu.Unlock()
+
+	if len(ds.items) == 0 {
+		return
+	}
+
+	for _, dev := range ds.items {
+		dev.Disconnect()
+	}
+
+	ds.items = make(map[uint32]*device.Device)
+	ds.hosts = make(map[string]uint32)
+}
+
+func (ds *devices) GetAll() []deviceListItem {
+	ds.mu.Lock()
+	defer ds.mu.Unlock()
+
+	var list []deviceListItem
+
+	for _, dev := range ds.items {
+		item := deviceListItem{
+			Id: dev.Id(),
+		}
+
+		for ip, id := range ds.hosts {
+			if id == item.Id {
+				item.Ip = ip
+				break
+			}
+		}
+
+		list = append(list, item)
+	}
+
+	return list
 }
 
 var (
@@ -593,11 +639,35 @@ func clearNewRecords(w http.ResponseWriter, r *http.Request) {
 	resp.Data = total
 }
 
-func RunServer(address string, token string) {
+func getDevices(w http.ResponseWriter, r *http.Request) {
+	resp := (r.Context().Value("resp")).(*models.Response)
+	resp.Data = devs.GetAll()
+}
+
+func index(w http.ResponseWriter, r *http.Request) {
+	var data = `<html>
+<head>
+<title>anviz-rpc</title>
+</head>
+<body>
+anviz-rpc
+</body>
+</html>
+`
+
+	w.Write([]byte(data))
+}
+
+func RunServer(address string, token string) error {
+	if server != nil {
+		return errors.New("server already running: " + server.Addr)
+	}
 	tokenAuth = token
 	r := mux.NewRouter().Methods("GET", "POST").Subrouter()
 	r.Use(baseMiddleware)
+	r.HandleFunc("/", index)
 	r.HandleFunc("/connect", connect)
+	r.HandleFunc("/devices", getDevices)
 
 	s := r.PathPrefix("/{id:[0-9]+}").Methods("GET", "POST").Subrouter()
 	s.Use(deviceMiddleware)
@@ -616,6 +686,29 @@ func RunServer(address string, token string) {
 	ur.HandleFunc("/modify", modifyUser).Methods("POST")
 	ur.HandleFunc("/delete", deleteUser).Methods("GET")
 
-	http.Handle("/", r)
-	log.Fatal(http.ListenAndServe(address, nil))
+	server = &http.Server{
+		Addr:    address,
+		Handler: r,
+	}
+
+	go func() {
+		err := server.ListenAndServe()
+		if err != nil {
+			log.Println(err)
+		}
+		server = nil
+	}()
+	time.Sleep(500 * time.Second)
+	return nil
+}
+
+func StopServer() error {
+	if server == nil {
+		return errors.New("server is not running")
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+	defer cancel()
+
+	server.SetKeepAlivesEnabled(false)
+	return server.Shutdown(ctx)
 }
