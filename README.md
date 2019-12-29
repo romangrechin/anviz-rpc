@@ -1,6 +1,15 @@
 # anviz-rpc
 Http wrapper for anviz devices
 
+## Конфигурация:
+
+   config.json
+   
+    {
+       "host": "localhost:8081",                       // интерфейс и порт, на котором будет запущен демон 
+       "api-key": "DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C"   // токен доступа, который будет использоваться в заголовке "X-API-Key"
+    }
+
 ## Запуск: 
 
     anviz-rpc -с [config file path]
