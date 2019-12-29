@@ -706,6 +706,10 @@ func StopServer() error {
 	if server == nil {
 		return errors.New("server is not running")
 	}
+	defer func() {
+		server = nil
+	}()
+
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
