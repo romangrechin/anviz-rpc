@@ -693,12 +693,12 @@ func RunServer(address string, token string) error {
 
 	go func() {
 		err := server.ListenAndServe()
-		if err != nil {
-			log.Println(err)
+		if err != nil && err != http.ErrServerClosed {
+			log.Fatalf("Server stoppped with error: %s\n", err.Error())
 		}
 		server = nil
 	}()
-	time.Sleep(500 * time.Second)
+	time.Sleep(500 * time.Millisecond)
 	return nil
 }
 
