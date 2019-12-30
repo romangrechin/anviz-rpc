@@ -8,7 +8,7 @@ Http wrapper for anviz devices
     {
        "host": "localhost:8081",                       // интерфейс и порт, на котором будет запущен демон 
        "api-key": "DeLr8bFkhmnOJMxRz9xoekzYGUmvef4C"   // токен доступа, который будет использоваться в заголовке "X-API-Key"
-    }
+    } 
 
 ## Запуск: 
 
@@ -17,6 +17,21 @@ Http wrapper for anviz devices
 *Пример*: 
 
     anviz-rpc -c config.json
+
+## Windows сервис
+#### Установка (выполняется с правами администратора):
+    
+    anviz-rpc-x64.exe install -c  path\to\config.json
+    anviz-rpc-x64.exe start
+    
+#### Удалениe (выполняется с правами администратора):
+    
+    anviz-rpc-x64.exe stop
+    anviz-rpc-x64.exe remove
+    
+#### Запуск приложения в режиме отладки:
+
+    anviz-rpc-x64.exe debug -c  path\to\config.json
 
 ## Методы:
   Во все методы необходимо добавить заголовок авторизации: **X-API-Key** 
