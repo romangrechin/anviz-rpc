@@ -1,50 +1,84 @@
+// Copyright 2012 The Go Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
+
+// +build windows
+
+// Example service program that beeps.
+//
+// The program demonstrates how to create Windows service and
+// install / remove it on a computer. It also shows how to
+// stop / start / pause / continue any service, and how to
+// write to event log. It also shows how to use debug
+// facilities available in debug package.
+//
 package main
 
 import (
-	"encoding/json"
 	"fmt"
-	"github.com/romangrechin/anviz-rpc/api"
-	"io/ioutil"
 	"log"
 	"os"
+	"strings"
+
+	"golang.org/x/sys/windows/svc"
 )
 
-var cfg *config
-
-type config struct {
-	Host  string `json:"host"`
-	Token string `json:"api-key"`
+func usage(errmsg string) {
+	fmt.Fprintf(os.Stderr,
+		"%s\n\n"+
+			"usage: %s <command>\n"+
+			"       where <command> is one of\n"+
+			"       install, remove, debug, start, stop, pause or continue.\n",
+		errmsg, os.Args[0])
+	os.Exit(2)
 }
 
 func main() {
-	if len(os.Args) < 3 || os.Args[1] != "-c" {
-		fmt.Println("Usage: anviz-rpc -c [path to config.json]")
-		os.Exit(1)
-	}
+	const svcName = "anviz-rpc"
 
-	err := parseConfig(os.Args[2])
+	isIntSess, err := svc.IsAnInteractiveSession()
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to determine if we are running in an interactive session: %v", err)
+	}
+	if !isIntSess {
+		runService(svcName, false)
+		return
 	}
 
-	if cfg != nil {
-		fmt.Println("Server started on: ", cfg.Host)
-		api.RunServer(cfg.Host, cfg.Token)
-		os.Exit(0)
+	if len(os.Args) < 2 {
+		usage("no command specified")
 	}
-	os.Exit(1)
-}
 
-func parseConfig(filePath string) error {
-	data, err := ioutil.ReadFile(filePath)
+	cmd := strings.ToLower(os.Args[1])
+	switch cmd {
+	case "debug":
+		runService(svcName, true)
+		return
+	case "install":
+		var configPath string
+		for i, arg := range os.Args {
+			if arg == "-c" && len(os.Args) > i+1 {
+				configPath = os.Args[i+1]
+				break
+			}
+		}
+
+		if configPath == "" {
+			err = installService(svcName, "Anviz RPC service")
+		} else {
+			err = installService(svcName, "Anviz RPC service", "-c", configPath)
+		}
+	case "remove":
+		err = removeService(svcName)
+	case "start":
+		err = startService(svcName)
+	case "stop":
+		err = controlService(svcName, svc.Stop, svc.Stopped)
+	default:
+		usage(fmt.Sprintf("invalid command %s", cmd))
+	}
 	if err != nil {
-		return err
+		log.Fatalf("failed to %s %s: %v", cmd, svcName, err)
 	}
-	cfg = &config{}
-	err = json.Unmarshal(data, cfg)
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return
 }

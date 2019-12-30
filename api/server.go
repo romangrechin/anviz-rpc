@@ -224,7 +224,7 @@ func getDeviceId(r *http.Request) uint32 {
 			return 0
 		}
 
-		if id > math.MaxUint32 {
+		if id > math.MaxInt32 {
 			return 0
 		}
 
@@ -257,7 +257,7 @@ func getUserId(r *http.Request) uint64 {
 			return 0
 		}
 
-		if id > math.MaxUint32 {
+		if id > math.MaxInt32 {
 			return 0
 		}
 

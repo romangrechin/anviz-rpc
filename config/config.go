@@ -38,8 +38,11 @@ func getExecDir() string {
 func Read() (*configStruct, error) {
 	var configPath string
 
-	if len(os.Args) >= 3 && os.Args[1] == "-c" {
-		configPath = os.Args[2]
+	for i, arg := range os.Args {
+		if arg == "-c" && len(os.Args) > i+1 {
+			configPath = os.Args[i+1]
+			break
+		}
 	}
 
 	if configPath != "" {
