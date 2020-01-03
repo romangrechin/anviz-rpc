@@ -12,12 +12,15 @@ const (
 	cmdSetDateTime        = 0x39
 	cmdGetRecordInfo      = 0x3C
 	cmdGetTaRecords       = 0x40
+	cmdGetC3Users         = 0x22
+	cmdSetC3Users         = 0x23
 	cmdGetUsers           = 0x72
 	cmdSetUsers           = 0x73
 	cmdDelUser            = 0x4C
 	cmdGetFactoryInfoCode = 0x4A
 	cmdGetCapacity        = 0x5D
 	cmdClearRecord        = 0x4E
+	cmdGetDeviceTypeCode  = 0x48
 )
 
 type commandResponse interface {
@@ -33,6 +36,7 @@ type Device struct {
 	readWriteTimeout time.Duration
 	isBusy           bool
 	abort            chan struct{}
+	typeCode         string
 }
 
 func (d *Device) Id() uint32 {
@@ -45,6 +49,10 @@ func (d *Device) Id() uint32 {
 
 func (d *Device) IsUnicode() bool {
 	return d.isUnicode
+}
+
+func (d *Device) IsC3() bool {
+	return d.typeCode == "C3" || d.typeCode == "C2"
 }
 
 func (d *Device) IsBusy() bool {
@@ -76,6 +84,8 @@ func (d *Device) Connect() (err error) {
 		return err
 	}
 
+	d.GetTypeCode()
+
 	d.abort = make(chan struct{})
 
 	return nil
@@ -87,6 +97,23 @@ func (d *Device) Disconnect() {
 		d.conn = nil
 		close(d.abort)
 	}
+}
+
+func (d *Device) GetTypeCode() (*models.TypeCode, error) {
+	if d.isBusy {
+		return nil, errors.ErrDeviceIsBusy
+	}
+	d.isBusy = true
+	defer func() { d.isBusy = false }()
+
+	m := &models.TypeCode{}
+	err := d.request(cmdGetDeviceTypeCode, m, nil)
+	if err != nil {
+		d.deviceInfo = nil
+		return nil, err
+	}
+	d.typeCode = m.Code
+	return m, nil
 }
 
 func (d *Device) GetInfo() (*models.DeviceInfo, error) {
@@ -290,7 +317,12 @@ func (d *Device) GetUsers(firstPacket, resendLastPacket bool) (*models.UserList,
 	}
 	m := &models.UserList{}
 	m.SetIsUnicode(d.isUnicode)
-	err := d.request(cmdGetUsers, m, data)
+	var cmd uint8 = cmdGetUsers
+	if d.IsC3() {
+		m.SetIsC3(true)
+		cmd = cmdGetC3Users
+	}
+	err := d.request(cmd, m, data)
 	if err != nil {
 		return nil, err
 	}
@@ -306,7 +338,12 @@ func (d *Device) SetUsers(m models.UserList) error {
 
 	resp := &models.UserCreateResponse{}
 
-	err := d.request(cmdSetUsers, resp, m.Marshal())
+	var cmd uint8 = cmdSetUsers
+	if d.IsC3() {
+		cmd = cmdSetC3Users
+	}
+
+	err := d.request(cmd, resp, m.Marshal())
 	return err
 }
 

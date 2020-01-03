@@ -55,7 +55,7 @@ type Users struct {
 	Group          uint8  `json:"group"`
 	AttendanceMode uint8  `json:"attendance_mode"`
 	RegisteredFp   uint16 `json:"registered_fp"`
-	Keep           uint8  `json:"keep"`
+	Keep           uint16 `json:"keep"`
 	SpecialInfo    uint8  `json:"special_info"`
 	IsAdmin        bool   `json:"is_admin"`
 }

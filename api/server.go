@@ -473,6 +473,7 @@ func addUser(w http.ResponseWriter, r *http.Request) {
 
 	list := devmodels.UserList{}
 	list.SetIsUnicode(true)
+	list.SetIsC3(dev.IsC3())
 	user := &devmodels.User{
 		UserCode:       req.Id,
 		Password:       req.Password,
@@ -485,6 +486,7 @@ func addUser(w http.ResponseWriter, r *http.Request) {
 		Keep:           req.Keep,
 		SpecialInfo:    req.SpecialInfo,
 		IsUnicode:      true,
+		IsC3:           dev.IsC3(),
 	}
 	user.SetIsAdmin(req.IsAdmin)
 	err = list.Add(*user)
@@ -518,6 +520,7 @@ func modifyUser(w http.ResponseWriter, r *http.Request) {
 
 	list := devmodels.UserList{}
 	list.SetIsUnicode(true)
+	list.SetIsC3(dev.IsC3())
 	user := &devmodels.User{
 		UserCode:       userId,
 		Password:       req.Password,
@@ -530,6 +533,7 @@ func modifyUser(w http.ResponseWriter, r *http.Request) {
 		Keep:           req.Keep,
 		SpecialInfo:    req.SpecialInfo,
 		IsUnicode:      true,
+		IsC3:           dev.IsC3(),
 	}
 	user.SetIsAdmin(req.IsAdmin)
 	err = list.Add(*user)

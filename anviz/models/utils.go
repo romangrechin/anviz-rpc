@@ -78,6 +78,19 @@ func isEmpty(data []byte) bool {
 	return true
 }
 
+func utfToString(b []byte) string {
+	var buf []byte
+	for i := range b {
+		if b[i] == 0x0 {
+			break
+		}
+
+		buf = append(buf, b[i])
+	}
+
+	return string(buf)
+}
+
 func unicodeToString(b []byte) string {
 	o := binary.BigEndian
 	utf := make([]uint16, (len(b)+(2-1))/2)
@@ -118,6 +131,23 @@ func stringToUnicode(val string, max int) []byte {
 			break
 		}
 		o.PutUint16(buf[i*2:i*2+2], runes[i])
+	}
+	return buf
+}
+
+func stringToUtf8(val string, max int) []byte {
+	buf := make([]byte, max)
+
+	runeBuf := make([]byte, utf8.UTFMax)
+	runes := []rune(val)
+	length := 0
+	for i := 0; i < len(runes); i++ {
+		n := utf8.EncodeRune(runeBuf, runes[i])
+		copy(buf[length:length+n], runeBuf[:n])
+		length += n
+		if length >= max {
+			break
+		}
 	}
 	return buf
 }

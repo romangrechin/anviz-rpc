@@ -9,12 +9,14 @@ import (
 const (
 	UnicodeUsersMaxResults = 0x08
 	AnsiUsersMaxResults    = 0x0C
+	C3MaxResults           = 0x06
 )
 
 type UserList struct {
 	length    int
 	users     []User
 	IsUnicode bool
+	IsC3      bool
 }
 
 func (ul *UserList) Add(user User) error {
@@ -22,6 +24,11 @@ func (ul *UserList) Add(user User) error {
 	if ul.IsUnicode {
 		max = UnicodeUsersMaxResults
 	}
+
+	if ul.IsC3 {
+		max = UnicodeUsersMaxResults
+	}
+
 	if len(ul.users) >= max {
 		return errors.ErrTaUserListFull
 	}
@@ -43,6 +50,10 @@ func (ul *UserList) SetIsUnicode(val bool) {
 	ul.IsUnicode = val
 }
 
+func (ul *UserList) SetIsC3(val bool) {
+	ul.IsC3 = val
+}
+
 func (ul *UserList) Unmarshal(data []byte) error {
 	if len(data) < 1 {
 		return errors.ErrInvalidUserListData
@@ -53,13 +64,17 @@ func (ul *UserList) Unmarshal(data []byte) error {
 		dataLength = 40
 	}
 
+	if ul.IsC3 {
+		dataLength = 84
+	}
+
 	ul.length = int(data[0])
 	if len(data) != 1+ul.length*dataLength {
 		return errors.ErrInvalidUserListData
 	}
 
 	for i := 1; i < len(data); i += dataLength {
-		u := &User{}
+		u := &User{IsC3: ul.IsC3}
 		u.SetIsUnicode(ul.IsUnicode)
 		err := u.Unmarshal(data[i : i+dataLength])
 		if err != nil {
@@ -81,10 +96,14 @@ func (ul *UserList) Marshal() []byte {
 		dataLength = 40
 	}
 
+	if ul.IsC3 {
+		dataLength = 84
+	}
+
 	buf := make([]byte, 1+ul.length*dataLength)
 	buf[0] = uint8(ul.length)
 	for i := 0; i < ul.length; i++ {
-		copy(buf[i*40+1:], ul.users[i].Marshal())
+		copy(buf[i*dataLength+1:], ul.users[i].Marshal())
 	}
 	return buf
 }
@@ -99,10 +118,11 @@ type User struct {
 	Group          uint8
 	AttendanceMode uint8
 	RegisteredFp   uint16
-	Keep           uint8
+	Keep           uint16
 	SpecialInfo    uint8
 	IsUnicode      bool
 	isAdmin        bool
+	IsC3           bool
 }
 
 func (u *User) SetIsUnicode(val bool) {
@@ -125,12 +145,21 @@ func (u *User) Unmarshal(data []byte) error {
 		offset = 32
 	}
 
+	if u.IsC3 {
+		dataLength = 84
+		offset = 76
+	}
+
 	if len(data) != dataLength {
 		return errors.ErrInvalidUserData
 	}
 
 	if !isEmpty(data[5:8]) {
-		u.Password, u.pwdLength = unpackUserPassword(data[5:8], data[offset+5])
+		if u.IsC3 {
+			u.Password, u.pwdLength = unpackUserPassword(data[5:8], 0x00)
+		} else {
+			u.Password, u.pwdLength = unpackUserPassword(data[5:8], data[offset+5])
+		}
 	} else {
 		u.Password, u.pwdLength = 0, 0
 	}
@@ -143,12 +172,19 @@ func (u *User) Unmarshal(data []byte) error {
 		u.CardCode = 0
 	}
 
-	u.Name = unicodeToString(data[12:offset])
+	if u.IsC3 {
+		u.Name = utfToString(data[12:offset])
+		u.Keep = binary.BigEndian.Uint16(data[offset+5 : offset+7])
+	} else {
+		u.Name = unicodeToString(data[12:offset])
+		u.Keep = uint16(data[offset+6])
+	}
+
 	u.Department = data[offset]
 	u.Group = data[offset+1]
 	u.AttendanceMode = data[offset+2]
 	u.RegisteredFp = binary.BigEndian.Uint16(data[offset+3 : offset+5])
-	u.Keep = data[offset+6]
+
 	u.SpecialInfo = data[offset+7]
 	u.isAdmin = u.SpecialInfo>>6 == 3
 	return nil
@@ -158,10 +194,17 @@ func (u *User) Marshal() []byte {
 	dataLength := 30
 	offset := 22
 	max := 10
+
 	if u.IsUnicode {
 		dataLength = 40
 		offset = 32
 		max = 20
+	}
+
+	if u.IsC3 {
+		dataLength = 84
+		offset = 76
+		max = 63
 	}
 
 	data := make([]byte, dataLength)
@@ -175,7 +218,6 @@ func (u *User) Marshal() []byte {
 		bufPwd, add = packUserPassword(u.Password, u.pwdLength)
 	}
 	copy(data[5:8], bufPwd)
-	data[offset+5] = add
 
 	bufCardCode := []byte{0xff, 0xff, 0xff, 0xff}
 	if u.CardCode > 0 {
@@ -183,15 +225,26 @@ func (u *User) Marshal() []byte {
 	}
 	copy(data[8:12], bufCardCode)
 
-	bufName := stringToUnicode(u.Name, max)
-	copy(data[12:offset], bufName)
+	if u.IsC3 {
+		bufName := stringToUtf8(u.Name, max)
+		copy(data[12:offset], bufName)
+	} else {
+		bufName := stringToUnicode(u.Name, max)
+		copy(data[12:offset], bufName)
+	}
 
 	data[offset] = u.Department
 	data[offset+1] = u.Group
 	data[offset+2] = u.AttendanceMode
 
 	binary.BigEndian.PutUint16(data[offset+3:offset+5], u.RegisteredFp)
-	data[offset+6] = u.Keep
+
+	if u.IsC3 {
+		binary.BigEndian.PutUint16(data[offset+5:offset+7], u.Keep)
+	} else {
+		data[offset+5] = add
+		data[offset+6] = uint8(u.Keep)
+	}
 
 	if u.isAdmin {
 		u.SpecialInfo = (u.SpecialInfo & 0x3f) | (uint8(3) << 6)

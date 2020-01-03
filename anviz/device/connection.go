@@ -72,7 +72,7 @@ func (c *connection) send(cmd uint8, data []byte) ([]byte, error) {
 		return nil, errors.ErrConnectionWrite
 	}
 
-	resBuf := make([]byte, 512)
+	resBuf := make([]byte, 2048)
 	if c.readWriteTimeout > 0 {
 		c.conn.SetDeadline(time.Now().Add(c.readWriteTimeout))
 	}
@@ -90,6 +90,9 @@ func (c *connection) send(cmd uint8, data []byte) ([]byte, error) {
 func (c *connection) Close() {
 	if c.conn != nil {
 		c.status = DISCONNECTED
+		if v, ok := c.conn.(*net.TCPConn); ok {
+			v.SetKeepAlive(false)
+		}
 		_ = c.conn.Close()
 	}
 }
