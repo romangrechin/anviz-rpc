@@ -65,7 +65,7 @@ type TaRecord struct {
 }
 
 func (tr *TaRecord) IsOpen() bool {
-	return (tr.RecordType & 1) != 1
+	return (tr.RecordType & 1) == 1
 }
 
 func (tr *TaRecord) AttendanceMode() uint8 {
