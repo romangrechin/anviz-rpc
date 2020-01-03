@@ -204,7 +204,7 @@ func (u *User) Marshal() []byte {
 	if u.IsC3 {
 		dataLength = 84
 		offset = 76
-		max = 63
+		max = 64
 	}
 
 	data := make([]byte, dataLength)
