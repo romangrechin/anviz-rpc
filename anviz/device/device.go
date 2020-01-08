@@ -52,7 +52,7 @@ func (d *Device) IsUnicode() bool {
 }
 
 func (d *Device) IsC3() bool {
-	return d.typeCode == "C3" || d.typeCode == "C2"
+	return d.typeCode == "C3" || d.typeCode == "C2" || d.typeCode == "C5"
 }
 
 func (d *Device) IsBusy() bool {
