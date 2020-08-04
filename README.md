@@ -43,8 +43,9 @@ Http wrapper for anviz devices
     
 Ответ:
 
-    {"data":{"id":5956},"error":null} 
-    
+    {"data":{"id":5956, "code":"FACE7EI", "type": "face"},"error":null}
+типы устройств: face, eye, finger
+
   #### GET /[device_id:]/disconnect
 Ответ:
   
