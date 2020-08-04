@@ -3,6 +3,7 @@ package device
 import (
 	"github.com/romangrechin/anviz-rpc/anviz/errors"
 	"github.com/romangrechin/anviz-rpc/anviz/models"
+	"strings"
 	"time"
 )
 
@@ -21,6 +22,8 @@ const (
 	cmdGetCapacity        = 0x5D
 	cmdClearRecord        = 0x4E
 	cmdGetDeviceTypeCode  = 0x48
+	cmdDownloadFpTemplate = 0x44
+	cmdUploadFpTemplate   = 0x45
 )
 
 type commandResponse interface {
@@ -70,6 +73,24 @@ func (d *Device) State() uint8 {
 	return d.conn.status
 }
 
+func (d *Device) Code() string {
+	return d.typeCode
+}
+
+func (d *Device) BiometricType() string {
+	val := strings.ToLower(d.typeCode)
+
+	if strings.HasPrefix(val, "face") {
+		return "face"
+	}
+
+	if strings.HasPrefix(val, "iris") {
+		return "eye"
+	}
+
+	return "finger"
+}
+
 func (d *Device) Connect() (err error) {
 	// TODO: detect version (ANSI or UNICODE)
 	d.SetUnicode(true)
@@ -85,7 +106,6 @@ func (d *Device) Connect() (err error) {
 	}
 
 	d.GetTypeCode()
-
 	d.abort = make(chan struct{})
 
 	return nil
@@ -95,7 +115,9 @@ func (d *Device) Disconnect() {
 	if d.conn != nil {
 		d.conn.Close()
 		d.conn = nil
-		close(d.abort)
+		if d.abort != nil {
+			close(d.abort)
+		}
 	}
 }
 
@@ -394,6 +416,29 @@ func (d *Device) GetCapacity() (*models.Capacity, error) {
 		return nil, err
 	}
 	return m, nil
+}
+
+func (d *Device) DownloadFpTemplate(userCode uint64, backupCode uint8) ([]byte, error) {
+	ft := &models.FpTemplate{
+		UserCode:   userCode,
+		BackupCode: backupCode,
+	}
+
+	err := d.request(cmdDownloadFpTemplate, ft, ft.MarshalRequest())
+	if err != nil {
+		return nil, err
+	}
+	return ft.Data, nil
+}
+
+func (d *Device) UploadFpTemplate(userCode uint64, backupCode uint8, data []byte) error {
+	ft := &models.FpTemplate{
+		UserCode:   userCode,
+		BackupCode: backupCode,
+		Data:       data,
+	}
+
+	return d.request(cmdUploadFpTemplate, nil, ft.Marshal())
 }
 
 func (d *Device) request(cmd uint8, obj commandResponse, data []byte) error {

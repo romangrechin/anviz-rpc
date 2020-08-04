@@ -72,7 +72,7 @@ func (c *connection) send(cmd uint8, data []byte) ([]byte, error) {
 		return nil, errors.ErrConnectionWrite
 	}
 
-	resBuf := make([]byte, 2048)
+	resBuf := make([]byte, 4096)
 	if c.readWriteTimeout > 0 {
 		c.conn.SetDeadline(time.Now().Add(c.readWriteTimeout))
 	}

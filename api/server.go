@@ -2,6 +2,7 @@ package api
 
 import (
 	"context"
+	"encoding/base64"
 	"encoding/json"
 	"github.com/gorilla/mux"
 	"github.com/romangrechin/anviz-rpc/anviz/device"
@@ -17,9 +18,10 @@ import (
 )
 
 var (
-	ErrForbidden      = errors.New("forbidden", 403)
-	ErrDeviceNotFound = errors.New("device not found", 404)
-	ErrUserNotFound   = errors.New("user not found", 405)
+	ErrForbidden          = errors.New("forbidden", 403)
+	ErrDeviceNotFound     = errors.New("device not found", 404)
+	ErrUserNotFound       = errors.New("user not found", 405)
+	ErrFpTemplateNotFound = errors.New("template not found", 406)
 )
 
 var (
@@ -266,6 +268,23 @@ func getUserId(r *http.Request) uint64 {
 	return 0
 }
 
+func getFpId(r *http.Request) uint8 {
+	vars := mux.Vars(r)
+	if idString, ok := vars["fp_id"]; ok {
+		id, err := strconv.Atoi(idString)
+		if err != nil {
+			return 0
+		}
+
+		if id > 2 {
+			return 0
+		}
+
+		return uint8(id)
+	}
+	return 0
+}
+
 func connect(w http.ResponseWriter, r *http.Request) {
 	resp := (r.Context().Value("resp")).(*models.Response)
 
@@ -297,7 +316,7 @@ func connect(w http.ResponseWriter, r *http.Request) {
 	}
 
 	devs.Add(connectReq.Host, dev.Id(), dev)
-	resp.Data = &models.DeviceConnectDisconnect{Id: dev.Id()}
+	resp.Data = &models.DeviceConnectDisconnect{Id: dev.Id(), Code: dev.Code(), BiometricType: dev.BiometricType()}
 }
 
 func disconnect(w http.ResponseWriter, r *http.Request) {
@@ -648,6 +667,31 @@ func getDevices(w http.ResponseWriter, r *http.Request) {
 	resp.Data = devs.GetAll()
 }
 
+func getFpTemplate(w http.ResponseWriter, r *http.Request) {
+	dev := (r.Context().Value("dev")).(*device.Device)
+	resp := (r.Context().Value("resp")).(*models.Response)
+	userId := (r.Context().Value("user")).(uint64)
+	fpId := getFpId(r)
+
+	if fpId == 0 {
+		resp.Error = ErrFpTemplateNotFound
+		return
+	}
+
+	data, err := dev.DownloadFpTemplate(userId, fpId)
+	if err != nil {
+		resp.Error = ErrFpTemplateNotFound
+		return
+	}
+
+	if len(data) == 0 {
+		resp.Error = ErrFpTemplateNotFound
+		return
+	}
+
+	resp.Data = base64.StdEncoding.EncodeToString(data)
+}
+
 func index(w http.ResponseWriter, r *http.Request) {
 	var data = `<html>
 <head>
@@ -689,6 +733,7 @@ func RunServer(address string, token string) error {
 	ur.Use(userMiddleware)
 	ur.HandleFunc("/modify", modifyUser).Methods("POST")
 	ur.HandleFunc("/delete", deleteUser).Methods("GET")
+	ur.HandleFunc("/fp/{fp_id:[0-9]+}", getFpTemplate).Methods("GET")
 
 	server = &http.Server{
 		Addr:    address,

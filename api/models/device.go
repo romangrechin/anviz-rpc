@@ -5,7 +5,9 @@ type DeviceConnectRequest struct {
 }
 
 type DeviceConnectDisconnect struct {
-	Id uint32 `json:"id"`
+	Id            uint32 `json:"id"`
+	Code          string `json:"code,omitempty"`
+	BiometricType string `json:"type,omitempty"`
 }
 
 type DeviceInfoResponse struct {
@@ -67,4 +69,10 @@ type RecordItem struct {
 	Type           string `json:"type"`
 	AttendanceMode uint8  `json:"attendance_mode"`
 	WorkTypes      int32  `json:"work_types"`
+}
+
+type FpTemplate struct {
+	UserId     uint64 `json:"user_id"`
+	BackupCode uint8  `json:"backup_code"`
+	Template   string `json:"template"`
 }
