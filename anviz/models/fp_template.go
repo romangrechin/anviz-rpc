@@ -1,5 +1,7 @@
 package models
 
+import "log"
+
 type FpTemplate struct {
 	UserCode   uint64
 	BackupCode uint8
@@ -7,6 +9,7 @@ type FpTemplate struct {
 }
 
 func (ft *FpTemplate) Unmarshal(data []byte) error {
+	log.Println("len data out: ", len(data))
 	ft.Data = data
 	return nil
 }
@@ -20,12 +23,8 @@ func (ft *FpTemplate) MarshalRequest() []byte {
 }
 
 func (ft *FpTemplate) Marshal() []byte {
-	dataLength := 344
-	if len(ft.Data) > 338 { // Iris
-		dataLength = 1286
-	}
-
-	data := make([]byte, dataLength)
+	log.Println("len data in: ", len(ft.Data))
+	data := make([]byte, 6+len(ft.Data))
 	bufCode := fromUInt64(ft.UserCode)
 	copy(data[0:5], bufCode)
 	data[5] = ft.BackupCode

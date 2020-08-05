@@ -692,6 +692,48 @@ func getFpTemplate(w http.ResponseWriter, r *http.Request) {
 	resp.Data = base64.StdEncoding.EncodeToString(data)
 }
 
+func setFpTemplate(w http.ResponseWriter, r *http.Request) {
+	dev := (r.Context().Value("dev")).(*device.Device)
+	resp := (r.Context().Value("resp")).(*models.Response)
+	userId := (r.Context().Value("user")).(uint64)
+	fpId := getFpId(r)
+
+	if fpId == 0 {
+		resp.Error = ErrFpTemplateNotFound
+		return
+	}
+
+	req := &models.DataRequest{}
+	dec := json.NewDecoder(r.Body)
+	dec.DisallowUnknownFields()
+	err := dec.Decode(req)
+	if err != nil {
+		log.Println(err)
+		resp.Error = errors.New(err.Error(), 10000)
+		return
+	}
+
+	data, err := base64.StdEncoding.DecodeString(req.Data)
+	if err != nil {
+		log.Println(err)
+		resp.Error = errors.New(err.Error(), 10000)
+		return
+	}
+
+	if len(data) == 0 {
+		log.Println("len 0")
+		resp.Error = ErrFpTemplateNotFound
+		return
+	}
+
+	err = dev.UploadFpTemplate(userId, fpId, data)
+	if err != nil {
+		log.Println(err)
+		resp.Error = ErrFpTemplateNotFound
+		return
+	}
+}
+
 func index(w http.ResponseWriter, r *http.Request) {
 	var data = `<html>
 <head>
@@ -734,6 +776,7 @@ func RunServer(address string, token string) error {
 	ur.HandleFunc("/modify", modifyUser).Methods("POST")
 	ur.HandleFunc("/delete", deleteUser).Methods("GET")
 	ur.HandleFunc("/fp/{fp_id:[0-9]+}", getFpTemplate).Methods("GET")
+	ur.HandleFunc("/fp/{fp_id:[0-9]+}", setFpTemplate).Methods("POST")
 
 	server = &http.Server{
 		Addr:    address,

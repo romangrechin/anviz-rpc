@@ -71,8 +71,6 @@ type RecordItem struct {
 	WorkTypes      int32  `json:"work_types"`
 }
 
-type FpTemplate struct {
-	UserId     uint64 `json:"user_id"`
-	BackupCode uint8  `json:"backup_code"`
-	Template   string `json:"template"`
+type DataRequest struct {
+	Data string `json:"data"`
 }

@@ -2,6 +2,7 @@ package device
 
 import (
 	"github.com/romangrechin/anviz-rpc/anviz/errors"
+	"log"
 	"net"
 	"time"
 )
@@ -66,6 +67,10 @@ func (c *connection) send(cmd uint8, data []byte) ([]byte, error) {
 	if c.readWriteTimeout > 0 {
 		c.conn.SetDeadline(time.Now().Add(c.readWriteTimeout))
 	}
+
+	if cmd == 0x45 {
+		log.Println(buf)
+	}
 	_, err := c.conn.Write(buf)
 	if err != nil {
 		c.Close()
@@ -83,6 +88,9 @@ func (c *connection) send(cmd uint8, data []byte) ([]byte, error) {
 	}
 	c.conn.SetDeadline(emptyTime)
 	id, response, err := unmarshal(cmd, resBuf[:n])
+	if err != nil {
+		log.Println(resBuf[:n])
+	}
 	c.id = id
 	return response, err
 }
